@@ -1,4 +1,4 @@
-baseURL: "https://bnwp.org/"
+baseURL: "https://connect.bnwp.org/"
 DefaultContentLanguage: "bn"
 defaultContentLanguageInSubdir: "false"
 enableMissingTranslationPlaceholders: "false"
