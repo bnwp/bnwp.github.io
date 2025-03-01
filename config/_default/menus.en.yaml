@@ -1,0 +1,83 @@
+main:
+  - name: Home
+    url: /
+    weight: 1
+  - name: Events
+    weight: 2
+    url: /events/
+  - name: Blog
+    weight: 3
+    url: /posts/
+  - name: Members
+    url: /members/
+    parent: Introduction
+  - name: Core Members
+    url: /members/
+    parent: Introduction
+  - name: Partners
+    url: /members/
+    parent: Introduction
+  - name: Gallery
+    url: /about/gallery/
+    parent: Introduction
+  - name: Resources
+    url: /resources/
+    weight: 3
+  - name: Reports
+    url: /reports/
+  - name: Contact Us
+    url: /contact/
+  - name: News 
+    url: /news/
+  - name: Projects
+    url: /news/
+  - name: AnnualPlans
+    url: /plans/
+
+global:
+  - name: "Wikipedia"
+    url: "https://bn.wikipedia.org"
+    params:
+      label: Bengali learning materials
+  - name: "Wikibooks"
+    url: "https://bn.wikibooks.org"
+    params:
+      label: The most up-to-date Bengali dictionary
+  - name: "Wiktionary"
+    url: "https://bn.wiktionary.org"
+    params:
+      label: Regional language dictionary
+  - name: "Wikimedia Commons"
+    url: "https://commons.wikimedia.org"
+    params:
+      label: Free media collection
+  - name: "Wikidata"
+    url: "https://wikidata.org"
+    params:
+      label: Information and database
+  - name: "Wikisource"
+    url: "https://bn.wikisource.org"
+    params:
+      label: Books on Bengali language and culture
+  - name: "Wikiquote"
+    url: "https://bn.wikipedia.org"
+    params:
+      label: Books on language, technology, and culture
+  - name: "Wikispecies"
+    url: "https://bn.wikispecies.org"
+    params:
+      label: Encyclopedia of biodiversity
+
+globallinks:
+  - name: "Wikimedia Bangladesh"
+    url: "#"
+    params:
+      label: Local partner of Wikimedia Foundation
+  - name: "Wikimedia Foundation"
+    url: "#"
+    params:
+      label: Global governing body
+  - name: "Wikinandini"
+    url: "#"
+    params:
+      label: Collective initiative of female Wikipedians

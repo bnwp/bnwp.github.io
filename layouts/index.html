@@ -1,0 +1,94 @@
+{{ define "head" }}
+<script type="application/ld+json">
+    {
+      "@context" : "https://schema.org",
+      "@type" : "WebSite",
+      "name" : "{{.Site.Params.meta.name}}",
+      "alternateName" : ["ঐশিক", "ঐশিক রেহমান", "Aishik", "Oishik Rehman", "Oishik"],
+      "url" : "{{ absLangURL ""}}",
+      "potentialAction": [{
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "{{ absLangURL ""}}/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }]
+    }
+</script>
+{{ end }}
+
+{{ define "main" }}
+<section class="bg-green-5 position-relative overflow-hidden" id="homeHero">
+    <div class="container py-10">
+        <div class="carousel slide" data-interval="5000" data-bs-ride="carousel" id="QuoteCarousel">
+            <ul class="carousel-indicators">
+                {{ $lang := .Site.Language.Lang }}
+                {{ $quotes := index .Site.Data.quotes $lang }}
+                {{ range $index, $quote := $quotes }}
+                <li data-bs-slide-to="{{ $index }}" data-bs-target="#QuoteCarousel"
+                    class="{{ if eq $index 0 }}active{{ end }}"></li>
+                {{ end }}
+            </ul>
+            <div class="carousel-inner">
+                {{ range $index, $quote := $quotes }}
+                <div class="carousel-item{{ if eq $index 0 }} active{{ end }}">
+                    <figure class="text-center">
+                        <blockquote class="blockquote fs-3 fw-bold">{{ $quote }}</blockquote>
+                        <figcaption class="blockquote-footer text-light">{{ i18n "aishik" }}</figcaption>
+                    </figure>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="homeContent" class="container">
+    <div class="col-lg-9 m-auto py-5">
+        <h2 class="text-center py-3">{{i18n "recentPosts"}}</h2>
+        {{ $paginatedPages := .Paginate (where .Site.RegularPages "Type" "posts") }}
+        {{ range $paginatedPages.Pages }}
+        <article class="row border-bottom py-5">
+            <div class="col-12 col-md-5">
+                <h4 class="mb-0"><a class="fw-bold" href="{{.RelPermalink}}">{{ .Title }}</a></h4>
+                {{ with .Params.date }}
+                <span class="d-block fs-6 text-muted">{{ . | dateFormat "January 2, 2006" }}</span>
+                {{ end }}
+                <span class="d-block fs-6 text-muted">{{i18n "timetoread"}}: {{ .ReadingTime }} {{i18n "mintues"}}</span>
+                {{ with .Params.tags }}
+                {{ range $index, $tag := . }}
+                {{ if $index }},{{ end }}
+                <a class="fs-6" href="{{ absLangURL "/tags/" }}{{ $tag | urlize }}">{{ partial "fn.title.html" $tag }}</a>
+                {{- end -}}
+                {{ end }}
+            </div>
+            <div class="col-12 col-md-7 text-justify">
+                {{ .Summary | truncate 400 }}
+                {{ if .Truncated }}<a class="text-muted" href="{{ .RelPermalink }}">[{{i18n "readmore"}}]</a>{{ end }}
+            </div>
+        </article>
+        {{ end }}
+        <div class="d-flex row-center py-3">{{ template "_internal/pagination.html" . }}</div>
+    </div>
+</section>
+<div class="container">
+    <div class="row my-5">
+        <div class="col-lg-4 col-md-6">
+            <div class="section-title pt-4">
+                <h1>{{i18n "allTags"}}»</h1>
+                <p>»all tags</p>
+            </div>
+        </div>
+        {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+        <div class="col-lg-4 col-md-6 service-item">
+            <a class="text-black" href="/tags/{{ .Page.Title | urlize }}">
+                <div class="block"> <span class="colored-box text-center h3 mb-4">{{ .Count }}</span>
+                    <h3 class="mb-3 service-title">{{ partial "fn.title.html" $name }}</h3>
+                </div>
+            </a>
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
