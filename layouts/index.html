@@ -55,11 +55,13 @@
                 {{ with .Params.date }}
                 <span class="d-block fs-6 text-muted">{{ . | dateFormat "January 2, 2006" }}</span>
                 {{ end }}
-                <span class="d-block fs-6 text-muted">{{i18n "timetoread"}}: {{ .ReadingTime }} {{i18n "mintues"}}</span>
+                <span class="d-block fs-6 text-muted">{{i18n "timetoread"}}: {{ .ReadingTime }} {{i18n
+                    "mintues"}}</span>
                 {{ with .Params.tags }}
                 {{ range $index, $tag := . }}
                 {{ if $index }},{{ end }}
-                <a class="fs-6" href="{{ absLangURL "/tags/" }}{{ $tag | urlize }}">{{ partial "fn.title.html" $tag }}</a>
+                <a class="fs-6" href="{{ absLangURL " /tags/" }}{{ $tag | urlize }}">{{ partial "fn.title.html" $tag
+                    }}</a>
                 {{- end -}}
                 {{ end }}
             </div>
@@ -72,23 +74,27 @@
         <div class="d-flex row-center py-3">{{ template "_internal/pagination.html" . }}</div>
     </div>
 </section>
+
 <div class="container">
-    <div class="row my-5">
-        <div class="col-lg-4 col-md-6">
-            <div class="section-title pt-4">
-                <h1>{{i18n "allTags"}}»</h1>
-                <p>»all tags</p>
-            </div>
-        </div>
-        {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
-        <div class="col-lg-4 col-md-6 service-item">
-            <a class="text-black" href="/tags/{{ .Page.Title | urlize }}">
-                <div class="block"> <span class="colored-box text-center h3 mb-4">{{ .Count }}</span>
-                    <h3 class="mb-3 service-title">{{ partial "fn.title.html" $name }}</h3>
+    <h2 class="text-center">Our Team</h2>
+    <div class="row">
+        {{ $cots := index .Site.Data.cot $lang }}
+        {{ range $index, $cot := $cots }}
+        <div class="col-md-4 col-sm-6 col-12 mt-4 pt-2">
+            <div class="position-relative overflow-hidden">
+                <div class="d-flex">
+                    <img src="{{ $cot.image_url }}" class="img-fluid rounded-4" alt="{{ $cot.name }}">
+
                 </div>
-            </a>
+                <div class="content mt-3 text-center">
+                    <a href="#" class="team-title h6">{{ $cot.name }}</a>
+                    <p class="mb-0 text-muted mt-1">{{ $cot.role }}</p>
+                    {{/* {{ $cot.description }} */}}
+                </div>
+            </div>
         </div>
         {{ end }}
     </div>
 </div>
+
 {{ end }}
