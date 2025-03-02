@@ -15,7 +15,7 @@ languages:
     languageCode: bn-BD
     languageDirection: ltr
     languageName: বাংলা
-    title: বাংলা উইকিকানেক্ট
+    title: বাংলা উইকিসংযোগ
     weight: 1
     params:
       subtitle: "উইকিমিডিয়ানদের যৌথ উদ্যোগ"
