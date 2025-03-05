@@ -1,4 +1,4 @@
-baseURL: "https://bnwp.org/"
+baseURL: "/"
 DefaultContentLanguage: "bn"
 defaultContentLanguageInSubdir: "false"
 enableMissingTranslationPlaceholders: "false"
@@ -15,7 +15,7 @@ languages:
     languageCode: bn-BD
     languageDirection: ltr
     languageName: বাংলা
-    title: বাংলা উইকিকানেক্ট
+    title: বাংলা উইকিসংযোগ
     weight: 1
     params:
       subtitle: "উইকিমিডিয়ানদের যৌথ উদ্যোগ"
@@ -33,7 +33,7 @@ languages:
     title: Bangla WikiConnect
     weight: 2
     params:
-      subtitle: "Joint Project of Wikimedians"
+      subtitle: "A joint effort of Wikimedians"
       author:
         name: Aishik Rehman
         jobtitle: Wikimedian and Lexicolgist (BCSE)
@@ -44,7 +44,7 @@ Params:
   defaultColorMode: "light" #Changing this require some changes to colormode.js script, Otherwise it won't work
   activateColorModeToogler: true #To activate color mode dark/light toogler
   activatejQuery: false #In case we need jQuery
-  activateGlobalMenu: true #If we want to use Global Menu in case
+  activateGlobalMenu: false #If we want to use Global Menu in case
   useBootstrapMod: true #Mod of Bootsrap 5.3.3, If we don't want to use the mod, we need to set the BootstrapCDNVersion
   useBootstrapIcons: true #To use Botstrap Icons. Recommended is "true"
   userBootstrapBundleJS: true #Bootstarp Bundle Js
@@ -59,17 +59,17 @@ Params:
     name: Aishik Rehman
     jobtitle: Wikimedian and Lexicolgist and CSEr.
     url: "https://aishikrehman.com/about/"
-    email: hello@bnwp.org
+    email: contact@aishikrehman.com
     locality: Bangladesh
-    social:
-      facebook: "https://facebook.com/aishikrehman"
-      linkedin: "https://linkedin.com/in/aishikrehman"
-      # youtube: "https://youtube.com/@aishikrehman"
-      github: "https://github.com/aishikrehman"
-      wikipedia: "https://bn.wikipedia.com/wiki/User:Aishik Rehman"
-      #twitter: RehmanAishik
-    phone: "+880 1601660666"
-    picture: /assets/images/Aishik Rehman_Mymensingh_2019.jpg
+  social:
+    facebook: "https://facebook.com/banglawikiconnect"
+    linkedin: "https://linkedin.com/in/banglawikiconnect"
+    # youtube: "https://youtube.com/@banglawikiconnect"
+    github: "https://github.com/bnwp"
+    wikipedia: "https://meta.wikimedia.org/wiki/Bangla_WikiConnect"
+    #twitter: banglawikiconnect
+  phone: "+880 1601660666"
+  picture: /assets/images/Aishik Rehman_Mymensingh_2019.jpg
   github:
     user: bnwp
     repo: bnwp.github.io

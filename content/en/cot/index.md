@@ -1,0 +1,4 @@
+---
+title: "Cot"
+layout: cot
+---

@@ -1,10 +1,42 @@
 bn:
+  - name: মুহাম্মদ ইয়াহিয়া
+    username: Yahya
+    role: Lead Strategist
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Yahya_at_Bangla_WikiConference_2024.jpg/553px-Yahya_at_Bangla_WikiConference_2024.jpg"
+
+  - name: শাকিল হোসেন
+    username: MdsShakil
+    role: Fund management and Reporting
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Wikipedian_Shakil_taking_a_portrait_on_his_final_day_at_Bangla_WikiConference_2024.jpg/320px-Wikipedian_Shakil_taking_a_portrait_on_his_final_day_at_Bangla_WikiConference_2024.jpg"
+   
+  - name: ঐশিক রেহমান
+    username: Aishik Rehman
+    role: Lead Designer
+    img: "https://upload.wikimedia.org/wikipedia/commons/3/33/Aishik_Rehman_at_Wikimania_Bangladesh_-_2.png"
+
+  - name: সাদমান সাকিব
+    username: MS Sakib
+    role: Jury Coordinator
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Bangla_WikiConference_2024_-_Day_1_MS_Sakib_by_SHEIKH_%28cropped%29.jpg/384px-Bangla_WikiConference_2024_-_Day_1_MS_Sakib_by_SHEIKH_%28cropped%29.jpg"
+
+  - name: দেলোয়ার আকরাম
+    username: Deloar Akram
+    role: Lead dfd
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Deloar_Akram_at_Wikimania_conference_at_2022.jpg/360px-Deloar_Akram_at_Wikimania_conference_at_2022.jpg"
+    
+  - name: রিয়াজ উদ্দিন
+    username: RiazACU
+    role: Communication and Outreach
+    img: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Male_Avatar.jpg"
+    
+en:
   - name: Muhammad Yahya
+    username: Yahya
     role: Lead Strategist
     description: |
       Yahya is a Wikimedia steward and a dedicated Wikimedian. He has organized numerous edit-a-thons
       and events, including Wikimania (as a scholarship review committee member), the Bangla WikiConference, and many others!
-    image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Yahya_at_Bangla_WikiConference_2024.jpg/553px-Yahya_at_Bangla_WikiConference_2024.jpg"
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Yahya_at_Bangla_WikiConference_2024.jpg/553px-Yahya_at_Bangla_WikiConference_2024.jpg"
     social_links:
       linkedin: "#"
       github: "#"
@@ -12,6 +44,7 @@ bn:
       email: "mailto:yahya@bnwp.org"
 
   - name: Shakil Hosen
+    username: MdsShakil
     role: Fund management and Reporting
     description: |
       Shakil Hosen is a community leader and dedicated Wikimedian actively contributing to Bangla
@@ -19,32 +52,45 @@ bn:
       Additionally, he is an administrator on Bangla Wikibooks and contributes globally as a global renamer, global rollbacker, 
       and global sysop. With extensive experience, he has organized on-wiki edit-a-thons and events, including Wikimania Bangladesh
       2022, the Bangla WikiConference 2024, and many others.
-    image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Wikipedian_Shakil_taking_a_portrait_on_his_final_day_at_Bangla_WikiConference_2024.jpg/320px-Wikipedian_Shakil_taking_a_portrait_on_his_final_day_at_Bangla_WikiConference_2024.jpg"
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Wikipedian_Shakil_taking_a_portrait_on_his_final_day_at_Bangla_WikiConference_2024.jpg/320px-Wikipedian_Shakil_taking_a_portrait_on_his_final_day_at_Bangla_WikiConference_2024.jpg"
     social_links:
       linkedin: "#"
       github: "#"
       wikipedia: "https://meta.wikimedia.org/wiki/User:MdsShakil"
       email: "mailto:shakil@bnwp.org"
 
+  - name: Aishik Rehman
+    username: Aishik Rehman
+    role: Lead Designer
+    description: "Some random texts"
+    img: "https://upload.wikimedia.org/wikipedia/commons/3/33/Aishik_Rehman_at_Wikimania_Bangladesh_-_2.png"
+    social_links:
+      linkedin: "#"
+      github: "#"
+      wikipedia: "https://meta.wikimedia.org/wiki/User:Aishik_Rehman"
+      email: "mailto:contact@baishikrehman.com"
+
   - name: MS Sakib
+    username: MS Sakib
     role: Jury Coordinator
     description: |
       MS Sakib is an administrator on the Bengali Wikipedia and a dedicated Wikimedian. He actively contributes as a jury member
       in various competitions across Bangla Wikipedia and its sister projects. He was also part of the scholarship review team
       for the Bangla WikiConference.
-    image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Bangla_WikiConference_2024_-_Day_1_MS_Sakib_by_SHEIKH_%28cropped%29.jpg/384px-Bangla_WikiConference_2024_-_Day_1_MS_Sakib_by_SHEIKH_%28cropped%29.jpg"
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Bangla_WikiConference_2024_-_Day_1_MS_Sakib_by_SHEIKH_%28cropped%29.jpg/384px-Bangla_WikiConference_2024_-_Day_1_MS_Sakib_by_SHEIKH_%28cropped%29.jpg"
     social_links:
       facebook: "https://www.facebook.com/mssakib2003"
       wikipedia: "https://meta.wikimedia.org/wiki/User:MS_Sakib"
       email: "mailto:sakib@bnwp.org"
 
   - name: Deloar Akram
+    username: Deloar Akram
     role: Lead dfd
     description: |
       Deloar Akram is a passionate Wikimedian from Bangladesh. He has experience in running online and
       offline activities related to Wikimedia projects. He was a member of the organizing team of Bangla WikiConference.
       Also, he has served as a jury member for various Editathon competitions.
-    image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Deloar_Akram_at_Wikimania_conference_at_2022.jpg/360px-Deloar_Akram_at_Wikimania_conference_at_2022.jpg"
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Deloar_Akram_at_Wikimania_conference_at_2022.jpg/360px-Deloar_Akram_at_Wikimania_conference_at_2022.jpg"
     social_links:
       facebook: "https://fb.com/DeloarAkram"
       twitter: "https://X.com/DeloarAkram"
@@ -52,22 +98,13 @@ bn:
       email: "mailto:deloar.akram@gmail.com"
 
   - name: Riaz Uddin
+    username: RiazACU
     role: Communication and Outreach
     description: |
       Riaz is a Bangladeshi Wikimedian. He has been contributing to Wikimedia projects since 2017.
       Currently, he serves as an administrator and CheckUser on Bangla Wikipedia. He is also a co-editor of WikiBarta,
       a magazine published by Wikimedia Bangladesh.
-    image_url: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Male_Avatar.jpg"
+    img: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Male_Avatar.jpg"
     social_links:
       wikipedia: "https://meta.wikimedia.org/wiki/User:RiazACU"
       email: "mailto:riaz@bnwp.org"
-
-  - name: Aishik Rehman
-    role: Lead Designer
-    description: "Some random texts"
-    image_url: "https://upload.wikimedia.org/wikipedia/commons/3/33/Aishik_Rehman_at_Wikimania_Bangladesh_-_2.png"
-    social_links:
-      linkedin: "#"
-      github: "#"
-      wikipedia: "https://meta.wikimedia.org/wiki/User:Aishik_Rehman"
-      email: "mailto:contact@baishikrehman.com"

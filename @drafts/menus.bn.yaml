@@ -2,46 +2,35 @@ main:
   - name: নীড়
     url: /
     weight: 1
-  - name: পরিচিতি
-    url: /about/
-    weight: 1
-  # - name: কার্যক্রম
-  #   weight: 2
-  #   url: /events/
+  - name: কার্যক্রম
+    weight: 2
+    url: /events/
   - name: ব্লগ
     weight: 3
     url: /posts/
-
+  - name: সদস্য
+    url: /members/
+    parent: পরিচিতি
   - name: মূল দল
-    url: /cot/
-    parent: সদস্য
-    weight: 1
-  - name: কারিগরি ও প্রযুক্তি দল
-    url: /team/tech/
-    parent: সদস্য
-    weight: 2
-  - name: পর্যালোচক দল
-    url: /team/tech/
-    parent: সদস্য
+    url: /members/
+    parent: পরিচিতি
+  - name: অংশীদার
+    url: /members/
+    parent: পরিচিতি
+  - name: গ্যালারি
+    url: /about/gallery/
+    parent: পরিচিতি
+  - name: সংস্থান
+    url: /resources/
     weight: 3
-
-  # - name: অংশীদার
-  #   url: /members/
-  #   parent: পরিচিতি
-  # - name: গ্যালারি
-  #   url: /about/gallery/
-  #   parent: পরিচিতি
-  # - name: সংস্থান
-  #   url: /resources/
-  #   weight: 3
-  # - name: প্রতিবেদন
-  #   url: /reports/
-  # - name: সংবাদ
-  #   url: /news/
-  # - name: প্রকল্প
-  #   url: /news/
-  # - name: বার্ষিক পরিকল্পনা
-  #   url: /plans/
+  - name: প্রতিবেদন
+    url: /reports/
+  - name: সংবাদ
+    url: /news/
+  - name: প্রকল্প
+    url: /news/
+  - name: বার্ষিক পরিকল্পনা
+    url: /plans/
 
 global: 
   - name: "উইকিপিডিয়া"

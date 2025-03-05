@@ -2,19 +2,62 @@
 	<div class="container pt-5 text-center text-md-start">
 		<div class="row px-2">
 			<div class="col-12 col-sm-6">
-				<a class="h5 mb-4" href='{{absLangURL "/"}}'>{{.Site.Title}}</a>
-				{{/*  <ul class="list-inline fs-6">
+				{{ $homepage_url := absLangURL "" }}
+				{{ if .Site.Params.logo }}
+				<a class="navbar-brand" href="{{$homepage_url}}" aria-label="{{.Site.Title}}">
+					<img class="navbar-brand-logo" src="#" alt="#">
+				</a>
+				{{ else }}
+				<a class="navbar-brand me-4" href='{{ absLangURL "" }}'>
+					<h5 class="mb-0 fw-bold">{{ .Site.Title }}</h5>
+					<span class="d-block fs-6">{{ .Site.Params.subtitle }}</span>
+				</a>
+				{{ end }}
+				{{/* <ul class="list-inline fs-6">
 					<li class="list-inline-item"><a href="#">{{ .Site.Params.author.phone }}</a></li><br>
-					<li class="list-inline-item"><a href="mailto:{{.Site.Params.author.email}}">{{.Site.Params.author.email}}</a></li>
-				</ul>  */}}
+					<li class="list-inline-item"><a
+							href="mailto:{{.Site.Params.author.email}}">{{.Site.Params.author.email}}</a></li>
+				</ul> */}}
 			</div>
 			<div class="col-12 col-sm-6 text-center text-md-end mb-4">
-				{{ partial "links.social.html" . }}
+				{{/*  {{ partial "links.social.html" . }}  */}}
+				<a type="button" class="btn btn-outline-secondary mt-1" href="/contact/">Contact</a>
+					<a type="button" class="btn btn-outline-secondary mt-1" href="/contact/">Career</a>
 			</div>
 		</div>
-		{{/*  {{ with .GitInfo }}<p class="fs-xs text-muted">The page is last edited on
+		{{/* {{ with .GitInfo }}<p class="fs-xs text-muted">The page is last edited on
 			{{ .AuthorDate.Format "2006-01-02T15:04:05-07:00" }} by {{ .AuthorName }}
-			</p>{{ end }}  */}}
+		</p>{{ end }} */}}
+		{{/*  <div class="row py-3 py-md-5">
+			<div class="col-md-8">
+				<h5 class="mb-2 border-bottom fw-bold">প্রকল্প</h5>
+				<ul class="li-col-2">
+					{{ range .Site.Menus.global }}
+					<li>
+						<a href="{{absLangURL .URL}}">{{ .Name }}</a>
+						{{ with .Params.label}}
+						<span class="d-block fs-6 ps-3">{{.}}...</span>
+						{{ end}}
+					</li>
+					{{ end}}
+				</ul>
+			</div>
+
+			<div class="col-md-4">
+				<h5 class="mb-2 border-bottom fw-bold">সহযোগী</h5>
+				<ul class="list-unstyled">
+					{{ range .Site.Menus.globallinks }}
+					<li>
+						<a href="{{absLangURL .URL}}">{{ .Name }}</a>
+						{{ with .Params.label}}
+						<span class="d-block fs-6 ps-3">{{.}}...</span>
+						{{ end}}
+					</li>
+					{{ end}}
+				</ul>
+			</div>
+		</div>  */}}
+
 		<div class="pb-4 fs-6 text-muted">{{i18n "allrights"}} <br> {{i18n "copyright"}}
 		</div>
 	</div>

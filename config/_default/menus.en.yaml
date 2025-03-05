@@ -2,37 +2,35 @@ main:
   - name: Home
     url: /
     weight: 1
-  - name: Events
+  - name: About
     weight: 2
-    url: /events/
+    url: /about/
   - name: Blog
     weight: 3
     url: /posts/
   - name: Members
     url: /members/
-    parent: Introduction
+    parent: Team
   - name: Core Members
-    url: /members/
-    parent: Introduction
-  - name: Partners
-    url: /members/
-    parent: Introduction
-  - name: Gallery
-    url: /about/gallery/
-    parent: Introduction
-  - name: Resources
-    url: /resources/
-    weight: 3
-  - name: Reports
-    url: /reports/
-  - name: Contact Us
-    url: /contact/
-  - name: News 
-    url: /news/
-  - name: Projects
-    url: /news/
-  - name: AnnualPlans
-    url: /plans/
+    url: /cot/
+    parent: Team
+  # - name: Partners
+  #   url: /members/
+  #   parent: Introduction
+  # - name: Gallery
+  #   url: /about/gallery/
+  #   parent: Introduction
+  # - name: Resources
+  #   url: /resources/
+  #   weight: 3
+  # - name: Reports
+  #   url: /reports/
+  # - name: News 
+  #   url: /news/
+  # - name: Projects
+  #   url: /news/
+  # - name: AnnualPlans
+  #   url: /plans/
 
 global:
   - name: "Wikipedia"

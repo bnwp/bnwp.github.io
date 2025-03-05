@@ -19,6 +19,7 @@
 {{ end }}
 
 {{ define "main" }}
+{{/*
 <section class="bg-green-5 position-relative overflow-hidden" id="homeHero">
     <div class="container py-10">
         <div class="carousel slide" data-interval="5000" data-bs-ride="carousel" id="QuoteCarousel">
@@ -42,9 +43,184 @@
             </div>
         </div>
     </div>
+</section> */}}
+
+<section class="container my-5">
+    <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center ">
+        <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+            <h1 class="display-4 fw-bold lh-1 text-body-emphasis">Bangla WikiConnect is a collaborative initiative
+                focused on...</h1>
+            <p class="lead">...enhancing and expanding Wikipedia’s content in Bengali. Through a variety of engaging
+                contests, edit-a-thons, and training programs, we aim to develop high-quality, inclusive content on
+                Wikipedia and its sister projects such as Wikiquote, Wikivoyage, Wikibooks, and Wiktionary.
+            </p>
+            <div>
+                <a type="button" href="/about/" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Know More</a>
+                <a type="button" href="#" class="btn btn-outline-secondary btn-lg px-4">Go to Wikipage</a>
+            </div>
+        </div>
+        <div class="col-lg-4 offset-lg-1 p-0 ">
+            <img class="rounded-lg-3"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Bangla_WikiConnect_Proposed_Logo_01_-_BN.svg/290px-Bangla_WikiConnect_Proposed_Logo_01_-_BN.svg.png?20250301212148"
+                alt="" width="720">
+        </div>
+    </div>
 </section>
 
-<section id="homeContent" class="container">
+
+{{/*  <section class="container py-5">
+    <h2 class="text-center mb-5 fw-bold">প্রকল্পসমূহ</h2>
+    <div class="row pb-5 row-cols-1 row-cols-lg-3">
+        <a class="p-3 col rounded-3 border shadow-lg" href="#">
+            <div class="mb-3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd8oeF5tlu1qlCS0_M5bZsJiZchCgzFqmNpw&s"
+                    style="height: 80px; width:auto;">
+            </div>
+            <h3 class="fs-2 text-body-emphasis">Wiki Loves Children</h3>
+        </a>
+        <a class="p-3 col rounded-3 border shadow-lg" href="#">
+            <div class="mb-3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9KExh2Q9Jh-N64bda61VNSNrseoBPiLuwFw&s"
+                    style="height: 80px; width:auto;">
+            </div>
+            <h3 class="fs-2 text-body-emphasis">Wikiquote Writing Contest</h3>
+        </a>
+
+        <div class="p-3 col">
+            <div class="mb-3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9KExh2Q9Jh-N64bda61VNSNrseoBPiLuwFw&s"
+                    style="height: 80px; width:auto;">
+            </div>
+            <h3 class="fs-2 text-body-emphasis">Wikiquote Writing Contest</h3>
+
+        </div>
+        <div class="p-3 col">
+            <div class="mb-3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9KExh2Q9Jh-N64bda61VNSNrseoBPiLuwFw&s"
+                    style="height: 80px; width:auto;">
+            </div>
+            <h3 class="fs-2 text-body-emphasis">Wikibooks Writing Contest</h3>
+            <p>Wiki Loves Children (WLC) is an online initiative aimed at improving Wikipedia’s content on children’s
+                issues, rights, and well-being...</p>
+            <a href="#" class="icon-link">Learn More</a>
+        </div>
+        <div class="p-3 col">
+            <div class="mb-3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9KExh2Q9Jh-N64bda61VNSNrseoBPiLuwFw&s"
+                    style="height: 80px; width:auto;">
+            </div>
+            <h3 class="fs-2 text-body-emphasis">Wikibooks Writing Contest</h3>
+            <p>Wiki Loves Children (WLC) is an online initiative aimed at improving Wikipedia’s content on children’s
+                issues, rights, and well-being...</p>
+            <a href="#" class="icon-link">Learn More</a>
+        </div>
+        <div class="p-3 col">
+            <div class="mb-3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9KExh2Q9Jh-N64bda61VNSNrseoBPiLuwFw&s"
+                    style="height: 80px; width:auto;">
+            </div>
+            <h3 class="fs-2 text-body-emphasis">Wikibooks Writing Contest</h3>
+            <p>Wiki Loves Children (WLC) is an online initiative aimed at improving Wikipedia’s content on children’s
+                issues, rights, and well-being...</p>
+            <a href="#" class="icon-link">Learn More</a>
+        </div>
+        <div class="p-3 col">
+            <div class="mb-3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9KExh2Q9Jh-N64bda61VNSNrseoBPiLuwFw&s"
+                    style="height: 80px; width:auto;">
+            </div>
+            <h3 class="fs-2 text-body-emphasis">Wikibooks Writing Contest</h3>
+            <p>Wiki Loves Children (WLC) is an online initiative aimed at improving Wikipedia’s content on children’s
+                issues, rights, and well-being...</p>
+            <a href="#" class="icon-link">Learn More</a>
+        </div>
+        <div class="p-3 col">
+            <div class="mb-3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9KExh2Q9Jh-N64bda61VNSNrseoBPiLuwFw&s"
+                    style="height: 80px; width:auto;">
+            </div>
+            <h3 class="fs-2 text-body-emphasis">Wikibooks Writing Contest</h3>
+            <p>Wiki Loves Children (WLC) is an online initiative aimed at improving Wikipedia’s content on children’s
+                issues, rights, and well-being...</p>
+            <a href="#" class="icon-link">Learn More</a>
+        </div>
+
+    </div>
+</section>  */}}
+
+{{/* <section class="container py-5">
+    <div class="row row-cols-1 row-cols-sm-4 g-4">
+        <div class="col">
+            <div
+                class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                <svg class="bi" width="1em" height="1em">
+                    <use xlink:href="#collection"></use>
+                </svg>
+            </div>
+            <h4 class="fw-semibold mb-0 text-body-emphasis">উইকি লাভস চিল্ড্রেন</h4>
+            <p class="text-body-secondary">Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+
+        <div class="col">
+            <div
+                class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                <svg class="bi" width="1em" height="1em">
+                    <use xlink:href="#gear-fill"></use>
+                </svg>
+            </div>
+            <h4 class="fw-semibold mb-0 text-body-emphasis">উইকি লাভস উইমেন</h4>
+            <p class="text-body-secondary">Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+
+        <div class="col">
+            <div
+                class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                <svg class="bi" width="1em" height="1em">
+                    <use xlink:href="#speedometer"></use>
+                </svg>
+            </div>
+            <h4 class="fw-semibold mb-0 text-body-emphasis">উইকি লাভস মনুমেন্টস</h4>
+            <p class="text-body-secondary">Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+
+        <div class="col">
+            <div
+                class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                <svg class="bi" width="1em" height="1em">
+                    <use xlink:href="#table"></use>
+                </svg>
+            </div>
+            <h4 class="fw-semibold mb-0 text-body-emphasis">উইকি লাভস আর্থ</h4>
+            <p class="text-body-secondary">Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+    </div>
+
+</section> */}}
+
+<section class="container py-5">
+    <h2 class="text-center mb-5 fw-bold">Our Team</h2>
+    <div class="row g-4">
+        {{ $lang := .Site.Language.Lang }}
+        {{ $cots := index .Site.Data.cot $lang }}
+        {{ range $index, $cot := $cots }}
+        <div class="col-sm-6 col-lg-4">
+            <div class="border">
+                <div
+                    style="height: 310px; background-image:url({{ $cot.img }}); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                </div>
+                <div class="my-3 text-center fw-bold">
+                    <h4>{{ $cot.name }}</h4>
+                    <small class="d-block"><a href="https://bn.wikipedia.org/wiki/User:{{ $cot.username }}">[[User:{{
+                            $cot.username }}]]</a></small>
+                    <small>{{ $cot.role }}</small>
+                </div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</section>
+
+{{/* <section id="homeContent" class="container">
     <div class="col-lg-9 m-auto py-5">
         <h2 class="text-center py-3">{{i18n "recentPosts"}}</h2>
         {{ $paginatedPages := .Paginate (where .Site.RegularPages "Type" "posts") }}
@@ -73,28 +249,20 @@
         {{ end }}
         <div class="d-flex row-center py-3">{{ template "_internal/pagination.html" . }}</div>
     </div>
-</section>
+</section> */}}
 
-<div class="container">
-    <h2 class="text-center">Our Team</h2>
-    <div class="row">
-        {{ $cots := index .Site.Data.cot $lang }}
-        {{ range $index, $cot := $cots }}
-        <div class="col-md-4 col-sm-6 col-12 mt-4 pt-2">
-            <div class="position-relative overflow-hidden">
-                <div class="d-flex">
-                    <img src="{{ $cot.image_url }}" class="img-fluid rounded-4" alt="{{ $cot.name }}">
 
-                </div>
-                <div class="content mt-3 text-center">
-                    <a href="#" class="team-title h6">{{ $cot.name }}</a>
-                    <p class="mb-0 text-muted mt-1">{{ $cot.role }}</p>
-                    {{/* {{ $cot.description }} */}}
-                </div>
-            </div>
-        </div>
-        {{ end }}
+
+<section class="container my-5 text-center">
+    <h2 class="mb-5">Our Partners</h2>
+    <div class="d-flex" style="justify-content: center; gap: 3rem">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Wikimedia_Foundation_logo_-_vertical.svg/512px-Wikimedia_Foundation_logo_-_vertical.svg.png"
+            alt="Wikimedia Foundation" style="height: 60px; width:auto">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Wikimedia_Bangladesh_logo.svg/460px-Wikimedia_Bangladesh_logo.svg.png"
+            alt="Wikimedia Bangladesh" style="height: 60px; width:auto">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/WikiNandini_text_logo_2024.svg/320px-WikiNandini_text_logo_2024.svg.png"
+            alt="WikiNandini" style="height: 60px; width:auto">
+        <!-- Add more partner logos -->
     </div>
-</div>
-
+</section>
 {{ end }}

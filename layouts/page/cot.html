@@ -1,0 +1,21 @@
+{{ define "main" }}
+<section class="container py-5">
+    <div class="row g-4">
+        {{ $lang := .Site.Language.Lang }}
+        {{ $cots := index .Site.Data.cot $lang }}
+        {{ range $index, $cot := $cots }}
+        <div class="col-sm-6 col-lg-4">
+            <div class="border">
+                <div style="height: 310px; background-image:url({{ $cot.img }}); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                </div>
+                <div class="my-3 text-center fw-bold">
+                    <h4>{{ $cot.name }}</h4>
+                    <small class="d-block"><a href="https://bn.wikipedia.org/wiki/User:{{ $cot.username }}">[[User:{{ $cot.username }}]]</a></small>
+                    <small>{{ $cot.role }}</small>
+                </div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
