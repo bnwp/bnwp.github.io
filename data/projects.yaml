@@ -1,30 +1,40 @@
 bn:
-  - name: মুহাম্মদ ইয়াহিয়া
-    username: Yahya
+  - name: উইকি লাভস চিল্ড্রেন
+    wiki: wikibooks
     role: Lead Strategist
-    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Yahya_at_Bangla_WikiConference_2024.jpg/553px-Yahya_at_Bangla_WikiConference_2024.jpg"
+    img: "https://upload.wikimedia.org/wikipedia/commons/4/40/Wiki_Loves_Children_Logo.svg"
 
-  - name: শাকিল হোসেন
-    username: MdsShakil
+  - name: উইকি লাভস উইমেন সাউদ এশিয়া
+    wiki: Wikipedia
     role: Fund management and Reporting
-    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Wikipedian_Shakil_taking_a_portrait_on_his_final_day_at_Bangla_WikiConference_2024.jpg/320px-Wikipedian_Shakil_taking_a_portrait_on_his_final_day_at_Bangla_WikiConference_2024.jpg"
+    img: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Wiki_Loves_Women_Logo.jpg"
    
-  - name: ঐশিক রেহমান
-    username: Aishik Rehman
+  - name: উইকি লাভস মনুমেন্টস বাংলাদেশ
+    wiki: Commons
     role: Lead Designer
-    img: "https://upload.wikimedia.org/wikipedia/commons/3/33/Aishik_Rehman_at_Wikimania_Bangladesh_-_2.png"
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/WLM_Logo_Bangladesh.svg/300px-WLM_Logo_Bangladesh.svg.png"
 
-  - name: সাদমান সাকিব
+  - name: Wikibooks Writing Contest
     username: MS Sakib
     role: Jury Coordinator
-    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Bangla_WikiConference_2024_-_Day_1_MS_Sakib_by_SHEIKH_%28cropped%29.jpg/384px-Bangla_WikiConference_2024_-_Day_1_MS_Sakib_by_SHEIKH_%28cropped%29.jpg"
+    img: "https://upload.wikimedia.org/wikipedia/commons/0/02/Wikibooks_Writing_Contest.svg"
 
-  - name: দেলোয়ার আকরাম
+  - name: Wikiquote Writing Contest
     username: Deloar Akram
     role: Lead dfd
-    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Deloar_Akram_at_Wikimania_conference_at_2022.jpg/360px-Deloar_Akram_at_Wikimania_conference_at_2022.jpg"
+    img: "https://i.ytimg.com/vi/JEUTzvKlfVg/maxresdefault.jpg"
     
-  - name: রিয়াজ
+  - name: Wiktionary Entry Contest
+    username: RiazACU
+    role: Communication and Outreach
+    img: "https://upload.wikimedia.org/wikipedia/commons/0/05/WiktionaryEn_-_DP_Derivative.svg"
+
+  - name: Wikivoyage Article Writing Contest
+    username: RiazACU
+    role: Communication and Outreach
+    img: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Male_Avatar.jpg"
+
+  - name: "Train the newcomers: a video tutorial project"
     username: RiazACU
     role: Communication and Outreach
     img: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Male_Avatar.jpg"
@@ -97,7 +107,7 @@ en:
       wikipedia: "https://meta.wikimedia.org/wiki/User:DeloarAkram"
       email: "mailto:deloar.akram@gmail.com"
 
-  - name: Riaz 
+  - name: Riaz Uddin
     username: RiazACU
     role: Communication and Outreach
     description: |

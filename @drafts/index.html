@@ -72,7 +72,7 @@
 </section>
 
 {{/* Projects */}}
-{{/*  <section class="container py-5">
+<section class="container py-5">
     <h2 class="text-center mb-5 fw-bold">প্রকল্পসমূহ</h2>
     <div class="row pb-5 gap-3">
         <a class="col-12 d-block col-md-4 p-3 col rounded-3 border shadow-lg" href="#">
@@ -141,7 +141,7 @@
         </a>
 
     </div>
-</section>  */}}
+</section>
 
 {{/* <section class="container py-5">
     <div class="row row-cols-1 row-cols-sm-4 g-4">
@@ -193,7 +193,7 @@
 </section> */}}
 
 {{/* BlogPosts */}}
-{{/*  <section id="homeContent" class="container">
+<section id="homeContent" class="container">
     <div class="col-lg-9 m-auto py-5">
         <h2 class="text-center py-3">{{i18n "recentPosts"}}</h2>
         {{ $paginatedPages := .Paginate (where .Site.RegularPages "Type" "posts") }}
@@ -222,45 +222,6 @@
         {{ end }}
         <div class="d-flex row-center py-3">{{ template "_internal/pagination.html" . }}</div>
     </div>
-</section>  */}}
-
-{{/* Our Porjects */}}
-<section class="container py-5">
-    <h2 class="text-center mb-5 fw-bold">আমাদের প্রকল্পসমূহ</h2>
-
-    {{ $lang := .Site.Language.Lang }}
-    {{ $projects := index .Site.Data.projects $lang }}
-    {{ range $index, $project := $projects }}
-    {{ if modBool $index 2 }}
-    <hr>
-    <div class="row py-5 my-5">
-        <div class="col-md-7">
-            <h2 class="featurette-heading fw-normal lh-1">{{ $project.name }}</h2>
-            <div>started On: 01 Jan 2018; project status: active; upcoming: 2025; Team Co</div>
-            <div>Links</div>
-            <div>Edition</div>
-            <p class="lead my-3">And yes, this is the last block of representative placeholder content. Again, not really
-                intended to be actually read, simply here to give you a better view of what this would look like with
-                some actual content. Your content.</p>
-        </div>
-        <div class="col-md-5">
-            <img style="height: 200px; width: auto;" src="{{ $project.img }}" alt="">
-        </div>
-    </div>
-    {{ else}}
-    <hr>
-    <div class="row py-5 my-5">
-        <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading fw-normal lh-1">{{ $project.name }}</h2>
-            <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this
-                layout would work with some actual real-world content in place.</p>
-        </div>
-        <div class="col-md-5 order-md-1">
-            <img style="height: 200px; width: auto;" src="{{ $project.img }}" alt="">
-        </div>
-    </div>
-    {{end}}
-    {{ end }}
 </section>
 
 {{/* Our Team */}}
@@ -288,10 +249,57 @@
     </div>
 </section>
 
+{{/* Our Porjects */}}
+<section class="container py-5">
+    <h2 class="text-center mb-5 fw-bold">Our Projects</h2>
+    <div class="row py-5 my-5">
+        <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span
+                    class="text-body-secondary">Checkmate.</span></h2>
+            <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really
+                intended to be actually read, simply here to give you a better view of what this would look like with
+                some actual content. Your content.</p>
+        </div>
+        <div class="col-md-5">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Wiki_Loves_Women_Logo.jpg" alt="">
+        </div>
+    </div>
+
+    <div class="row py-5 my-5">
+        <div class="col-md-7 order-md-2">
+          <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good. <span class="text-body-secondary">See for yourself.</span></h2>
+          <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9KExh2Q9Jh-N64bda61VNSNrseoBPiLuwFw&s" alt="">
+        </div>
+      </div>
+
+    <div class="row g-4">
+        {{ $lang := .Site.Language.Lang }}
+        {{ $projects := index .Site.Data.projects $lang }}
+        {{ range $index, $project := $projects }}
+        <div class="col-sm-6 col-lg-4">
+            <div class="border">
+                <div
+                    style="height: 310px; background-image:url({{ $project.img }}); background-size: contain; background-position: center; background-repeat: no-repeat;">
+                </div>
+                <div class="my-3 text-center fw-bold">
+                    <h4>{{ $project.name }}</h4>
+                    <small class="d-block"><a
+                            href="https://bn.wikipedia.org/wiki/User:{{ $project.username }}">[[User:{{
+                            $project.username }}]]</a></small>
+                    <small>{{ $project.role }}</small>
+                </div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</section>
 
 {{/* Our Partners */}}
 <section class="container my-5 text-center">
-    <h2 class="my-5">Our Partners</h2>
+    <h2 class="mb-5">Our Partners</h2>
     <div class="d-flex flex-wrap" style="justify-content: center; gap: 3rem">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Wikimedia_Foundation_logo_-_vertical.svg/512px-Wikimedia_Foundation_logo_-_vertical.svg.png"
             alt="Wikimedia Foundation" style="height: 60px; width:auto">

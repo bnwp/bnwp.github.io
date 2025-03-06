@@ -11,7 +11,7 @@ paginate: 5
 languages:
   bn:
     disabled: false
-    contentDir: content/bn/
+    # contentDir: content/bn/
     languageCode: bn-BD
     languageDirection: ltr
     languageName: বাংলা
@@ -26,7 +26,7 @@ languages:
       cse: 458e08bf4d1094c8e
   en:
     disabled: false
-    contentDir: content/en/
+    # contentDir: content/en/
     languageCode: en-US
     languageDirection: ltr
     languageName: English
@@ -79,6 +79,7 @@ Params:
 
 taxonomies:
   tag: tags
+  member: member
 
 markup:
   goldmark:
