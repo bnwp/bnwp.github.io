@@ -1,0 +1,39 @@
+{{ define "main" }}
+
+<div class="bg-primary py-4">
+    <div class="container d-lg-flex justify-content-between py-5">
+        <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2 mb-2 d-none d-lg-block">
+            {{ partial "meta.breadcrumb" . }}
+        </div>
+        <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
+            <h1 class="h3 mb-0 text-light">{{ .Title }}</h1>
+            {{- if .IsTranslated -}}
+            {{ range .Translations }}
+            <a href="{{ .Permalink }}" class="text-light">{{i18n "alter" (dict "alter" .Language.LanguageName
+                )}}</a>
+            {{- end -}}
+            {{ end }}
+        </div>
+    </div>
+</div>
+<section class="container py-5">
+    {{ range $index, $page := .Paginator.Pages }}
+    <div class="container my-5">
+        <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+          <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+            <h1 class="display-5 fw-bold text-body-emphasis">{{ $page.Title }}</h1>
+            <p class="lead">{{$page.Params.Lead}}</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3  mt-5">
+              <a type="button" href="{{$page.RelPermalink}}" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">See Details</a>
+              <button type="button" class="btn btn-outline-secondary btn-lg px-4">Go to Wiki</button>
+            </div>
+          </div>
+          <div class="col-lg-4 offset-lg-1 p-0">
+              <img class="rounded-lg-3" src="{{$page.Params.logo}}" alt="" style="height: auto; width: 200px;">
+          </div>
+        </div>
+      </div>
+    {{ end }}
+
+</section>
+{{ end }}

@@ -38,8 +38,8 @@ main:
   #   url: /reports/
   # - name: সংবাদ
   #   url: /news/
-  # - name: প্রকল্প
-  #   url: /news/
+  - name: প্রকল্প
+    url: /projects/
   # - name: বার্ষিক পরিকল্পনা
   #   url: /plans/
 

@@ -1,0 +1,7 @@
+---
+title: Wiki Loves Children
+logo: https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/WLC_logo.svg/150px-WLC_logo.svg.png
+lead: According to UNICEF, over half of the world's children experience severe violence. It is estimated that 64 per cent of these children are in South Asia. 
+cover: https://upload.wikimedia.org/wikipedia/commons/9/9f/Wiki_Loves_Children_2021_banner.svg
+---
+According to UNICEF, over half of the world's children experience severe violence. It is estimated that 64 per cent of these children are in South Asia. In the same article, they also clarified that not only for the victim but also for anyone who witnesses the violence, the best way to address violence is to prevent it. But it is noteworthy that as part of an encyclopedia, no initiative has been taken to introduce child abuse and neglect to Wikipedia communities in the region. So, for the first time, we are organizing Wiki Loves Children on Bengali Wikipedia and Wikibooks. Like other wikibooks, the Bengali Wikibooks has a project for children called Wikijunior (উইকিশৈশব), but is currently almost inactive. Therefore, we have included it in the project with the aim of enriching and expanding its use in online learning activities for junior students. Especially during the Covid-19 pandemic period it can play a vital role in online learning and we will try to make Wikibooks (especially Wikijunior) a child-friendly alternative to Wikipedia.

@@ -1,0 +1,24 @@
+{{ define "main" }}
+<section>
+  <div id="project__heade"
+    style="background-image: url({{.Params.Cover}});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #ffc107;
+    background-blend-mode: screen;">
+    <div class="container py-5">
+      <h1 class="text-body-emphasis">{{ .Title }}</h1>
+      <p class="fs-5 col-md-8">{{ .Params.Lead }}</p>
+      <div class="mb-5">
+        <a href="{{.Params.wiki}}" class="btn btn-primary btn-lg px-4">উইকিতে দেখুন</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container ">
+    <hr>
+    {{.Content }}
+  </div>
+</section>
+{{ end }}

@@ -80,6 +80,8 @@ Params:
 taxonomies:
   tag: tags
   member: member
+  team: team
+  
 
 markup:
   goldmark:
