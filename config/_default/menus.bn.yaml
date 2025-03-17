@@ -5,9 +5,8 @@ main:
   - name: পরিচিতি
     url: /about/
     weight: 1
-  # - name: কার্যক্রম
-  #   weight: 2
-  #   url: /events/
+  - name: বার্তাকক্ষ
+    url: /newsroom/
   - name: ব্লগ
     weight: 3
     url: /posts/

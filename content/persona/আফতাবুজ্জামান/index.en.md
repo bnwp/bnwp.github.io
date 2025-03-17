@@ -1,10 +1,9 @@
 ---
-title: Aishik Rehman
-name: Aishik Rehman
+title: Aftabuzzaman
+name: Aftabuzzaman
 teams:
     - technical
-role: Visual Designer and Technical Advisor
-username: Aishik Rehman
+username: আফতাবুজ্জামান
 location: Bangladesh
 email: aishikrehman@gmail.com
 ---

@@ -3,7 +3,7 @@ title: "বাংলা পরিভাষা নিয়ে ভাবনা"
 tags:
     - language
 date: 2022-09-22
-persona: Aishik Rehman
+user: Aishik Rehman
 ---
 
 বাঙালির চিন্তা বড়ই সীমাবদ্ধ। পারিভাষিক শব্দের ৫ বৈশিষ্ট্য বা গুণ থাকা আবশ্যক।

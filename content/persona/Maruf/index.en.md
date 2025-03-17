@@ -1,10 +1,9 @@
 ---
-title: Aishik Rehman
-name: Aishik Rehman
+title: Maruf Hasan
+name: Maruf Hasan
 teams:
     - technical
-role: Visual Designer and Technical Advisor
-username: Aishik Rehman
+username: Maruf
 location: Bangladesh
 email: aishikrehman@gmail.com
 ---

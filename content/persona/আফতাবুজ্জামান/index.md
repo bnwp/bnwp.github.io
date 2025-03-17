@@ -1,10 +1,9 @@
 ---
-title: খাত্তাব হাসান
-name: খাত্তাব হাসান
+title: আফতাবুজ্জামান
+name: আফতাবুজ্জামান
 teams:
     - technical
-role: কারিগরি সদস্য
-username: Maruf
+username: আফতাবুজ্জামান
 location: Bangladesh
 email: aishikrehman@gmail.com
 ---

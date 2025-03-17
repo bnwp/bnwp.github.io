@@ -8,12 +8,23 @@ main:
   - name: Blog
     weight: 3
     url: /posts/
-  - name: Members
-    url: /members/
-    parent: Team
-  - name: Core Members
-    url: /cot/
-    parent: Team
+
+  - name: All Members
+    url: /persona/
+    parent: Members
+    weight: 1
+  - name: COT
+    url: /teams/cot/
+    parent: Members
+    weight: 2
+  - name: Technical Team
+    url: /teams/technical/
+    parent: Members
+    weight: 3
+  - name: Jury Coordination
+    url: /teams/jury/
+    parent: Members
+    weight: 4
   # - name: Partners
   #   url: /members/
   #   parent: Introduction

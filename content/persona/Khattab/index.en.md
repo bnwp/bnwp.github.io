@@ -1,10 +1,9 @@
 ---
-title: Aishik Rehman
-name: Aishik Rehman
+title: Khattab Hasan
+name: Khattab Hasan
 teams:
     - technical
-role: Visual Designer and Technical Advisor
-username: Aishik Rehman
+username: Khattab Hasan
 location: Bangladesh
 email: aishikrehman@gmail.com
 ---

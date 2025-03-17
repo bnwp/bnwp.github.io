@@ -3,7 +3,6 @@ title: মোঃ মারুফ হাসান
 name: মোঃ মারুফ হাসান
 teams:
     - technical
-role: কারিগরি সদস্য
 username: Maruf
 location: Bangladesh
 email: aishikrehman@gmail.com
