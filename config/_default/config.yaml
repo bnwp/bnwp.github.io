@@ -6,7 +6,7 @@ timeZone: "Asia/Dhaka"
 # enableGitInfo: true
 # googleAnalytics: "G-3NFDT41J8E"
 
-paginate: 5
+paginate: 6
 
 languages:
   bn:
@@ -79,8 +79,7 @@ Params:
 
 taxonomies:
   tag: tags
-  member: member
-  team: team
+  team: teams
   
 
 markup:

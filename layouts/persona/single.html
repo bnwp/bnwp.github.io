@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div id="project__header" style="background-image: url({{.Params.Cover}});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #fff3cd;
+    background-blend-mode: screen;">
+  <div class="container py-5">
+    <h1 class="display-4">{{.Params.Name}}</h1>
+    <h5>{{.Params.cot_role}}</h5>
+    <h6> @{{.Params.username}} | {{.Params.email}} | {{.Params.Location }}</h6>
+    <p class="lead my-3">{{.Params.bio}}</p>
+    <small class="d-block"><a href="https://bn.wikipedia.org/wiki/User:{{ .Params.username }}">[[User:{{
+        .Params.username }}]]</a></small>
+  </div>
+{{ end }}

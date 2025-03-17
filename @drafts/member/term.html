@@ -1,0 +1,25 @@
+{{ define "main" }}
+<section class="container my-5">
+  <div class="p-4 p-md-5 mb-4 border border-dashed rounded-5">
+      <h1 class="display-4">{{.Params.Name}}</h1>
+      <h5>{{.Params.cot_role}}</h5>
+      <h6> @{{.Params.username}} | {{.Params.email}} | {{.Params.Location }}</h6>
+      <p class="lead my-3">{{.Params.bio}}</p>
+  </div>
+
+  <div class="row mb-2">
+    {{ range .Paginator.Pages }}
+    <div class="col-md-6">
+      <div class="border rounded overflow-hidden flex-md-row mb-4 shadow-sm ">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3>{{.Title}}</h3>
+          <div class="mb-1 text-body-secondary"> {{ with .Params.date }}{{ . | dateFormat "January 2, 2006" }}{{ end }}</div>
+          <p class="card-text">{{ .Summary | truncate 200 }}</p>
+          {{ if .Truncated }}<a href="{{ .RelPermalink }}">{{i18n "readmore"}} ▶</a>{{ end }}
+        </div>
+      </div>
+    </div>
+    {{end}}
+  </div>
+</section>
+{{ end }}

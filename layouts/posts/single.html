@@ -17,7 +17,7 @@
         <i class="bi bi-tag-fill pe-1"></i>
         {{ range $index, $tag := . }}
         {{ if $index }}▪{{ end }}
-        <a class="fs-6" href="{{ absLangURL " /tags/" }}{{ $tag | urlize }}">{{ partial "fn.title.html" $tag }}</a>
+        <a class="fs-6" href="{{ absLangURL "/tags/" }}{{ $tag | urlize }}">{{ partial "fn.title.html" $tag }}</a>
         {{- end -}}
         {{ end }}
       </span>

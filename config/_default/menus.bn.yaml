@@ -12,18 +12,22 @@ main:
     weight: 3
     url: /posts/
 
-  - name: মূল দল
-    url: /cot/
+  - name: সকল সদস্য
+    url: /persona/
     parent: সদস্য
     weight: 1
-  - name: কারিগরি ও প্রযুক্তি দল
-    url: /team/tech/
+  - name: মূল দল
+    url: /teams/cot/
     parent: সদস্য
     weight: 2
-  - name: পর্যালোচক দল
-    url: /team/tech/
+  - name: কারিগরি ও প্রযুক্তি দল
+    url: /teams/technical/
     parent: সদস্য
     weight: 3
+  - name: পর্যালোচক দল
+    url: /teams/jury/
+    parent: সদস্য
+    weight: 4
 
   # - name: অংশীদার
   #   url: /members/

@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row g-4 my-5">
+      <div class="col-lg-4">
+        <div class="col-sm-6 col-lg-12">
+          <div class="card">
+            <div class="card-header border-0 pb-0">
+              <div style="height: 310px; background-image:url(https://upload.wikimedia.org/wikipedia/commons/3/33/Aishik_Rehman_at_Wikimania_Bangladesh_-_2.png); background-size: cover; background-position: center; background-repeat: no-repeat;">
+              </div>
+            </div>
+            <div class="card-body position-relative pt-0">
+              <h2 class="my-3">{{.Title}}</h2>
+              <p>{{.Content}}</p>
+              <ul class="list-unstyled mt-3 mb-0">
+                <li class="mb-2"> <i class="bi bi-calendar-date fa-fw pe-1"></i> Username: <strong> {{.Params.Username
+                    }}</strong> </li>
+                <li class="mb-2"> <i class="bi bi-heart fa-fw pe-1"></i> Role: <strong> {{.Params.Role }} </strong> </li>
+                <li> <i class="bi bi-envelope fa-fw pe-1"></i> Email: <strong> {{.Params.Email }} </strong> </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8 gap-4">
+        {{ range .Paginator.Pages }}
+        <div class="d-md-flex align-items-center mb-4">
+          <div class="me-3 mb-3 mb-md-0">
+            <a class="d-block" href="#!" style="height: 4rem; width: 4rem; ">
+              <img class="rounded-circle border" src="https://upload.wikimedia.org/wikipedia/commons/3/33/Aishik_Rehman_at_Wikimania_Bangladesh_-_2.png"
+                style="width: 100%; height: 100%; object-fit: cover;">
+            </a>
+          </div>
+          <div class="w-100">
+            <h5><a class="fw-bold" href="{{.RelPermalink}}">{{ .Title }}</a></h5>
+            {{ with .Params.tags }}
+              <div class="fs-6 pe-2 mb-2">
+                {{ range . }}
+                <a class="badge text-bg-dark" href='{{absLangURL "/tags/"}}{{ . | urlize }}'>#{{ . }}</a>
+                {{ end }}
+              </div>
+              {{ end }}
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>

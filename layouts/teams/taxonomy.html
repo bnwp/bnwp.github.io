@@ -1,0 +1,19 @@
+{{ define "main" }}
+<section class="container py-5">
+    <div class="row g-4">
+        {{ range .Paginator.Pages }}
+        <div class="col-sm-6 col-lg-4">
+            <a class="d-block border nav-link" href="{{.RelPermalink}}">
+                <div style="height: 310px; background-image:url({{ .Params.img }}); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                </div>
+                <div class="my-3 text-center fw-bold">
+                    <h4>{{ .Title }}</h4>
+                    <small class="d-block">@{{ .Params.username }}</small>
+                    <small>{{ .Params.role }}</small>
+                </div>
+            </a>
+        </div>
+        {{ end }}
+    </div>
+</section>
+{{ end }}

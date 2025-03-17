@@ -1,0 +1,29 @@
+{{ define "main" }}
+<section class="container" id="TeamMembers">
+    <div class="d-flex align-items-center p-3 my-3 text-white bg-primary rounded shadow-sm">
+        <div class="lh-1 m-auto">
+            <h1 class="mb-0 text-white lh-1">{{.Title }}</h1>
+            <small class="pt-2 d-block text-center">See in English</small>
+        </div>
+    </div>
+    <div class="row">
+        {{ range .Paginator.Pages }}
+        <div class="col-lg-4 my-3 text-center fw-bold">
+            <div class="p-3 rounded-3 border shadow-lg">
+                <div class="cots__avatar m-auto mb-3" style="width: 140px; height: 140px;">
+                    <img width="100%" height="100%" style="object-fit: cover" class="rounded-circle"
+                        src=" {{with .Params.img }}{{.}}{{else}}https://upload.wikimedia.org/wikipedia/commons/9/9e/Male_Avatar.jpg{{end}}"
+                        alt="{{.Title}}" title="{{.Title}}">
+                </div>
+                <h3 class="cots__name fw-normal m-0">{{.Title}}</h3>
+                <small class="d-block">
+                    <a href="https://bn.wikipedia.org/wiki/User:{{.Title}}">@{{.Params.username}}</a>
+                </small>
+                <small class="cots__role">{{.Params.role}}</small>
+                <p><a class="btn btn-outline-primary mt-2" href="{{.RelPermalink}}">View details »</a></p>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
