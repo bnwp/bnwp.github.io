@@ -1,12 +1,12 @@
 bn:
   - name: মুহাম্মদ ইয়াহিয়া
     username: Yahya
-    role: Lead Strategist
+    role: Co-Lead
     img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Yahya_at_Bangla_WikiConference_2024.jpg/553px-Yahya_at_Bangla_WikiConference_2024.jpg"
 
   - name: শাকিল হোসেন
     username: MdsShakil
-    role: Fund management and Reporting
+    role: Co-Lead
     img: "https://static.wikitide.net/mymensinghwiki/6/67/Shakil_Hosen.jpg"
    
   - name: ঐশিক রেহমান
@@ -26,7 +26,7 @@ bn:
     
   - name: রিয়াজ
     username: RiazACU
-    role: Communication and Outreach
+    role: Communication and Outreach Manager
     img: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Male_Avatar.jpg"
     
 en:
@@ -34,12 +34,12 @@ en:
     username: Yahya
     role: Lead Strategist
     description: |
-      Yahya is a Wikimedia steward and a dedicated Wikimedian. He has organized numerous edit-a-thons
-      and events, including Wikimania (as a scholarship review committee member), the Bangla WikiConference, and many others!
+      Yahya is a Wikimedia Steward and the Chief Coordinator of the Dhaka Wikimedia Community. He holds several advanced user rights across Wikimedia projects, including Administrator, Oversighter, and Interface Administrator on Bangla Wikipedia, his home wiki. He is also an Administrator on Wikidata and Bangla Wikivoyage, as well as a Central Notice Administrator.
+Beyond his on-wiki contributions, Yahya has extensive experience in organizing edit-a-thons and off-wiki events. He was a member of the Wikimania 2025 Scholarship Working Group, a Core Organizing Team (COT) member for Wikimania Bangladesh 2022, and part of the Operations Team for Bangla Wikiconference 2024.
     img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Yahya_at_Bangla_WikiConference_2024.jpg/553px-Yahya_at_Bangla_WikiConference_2024.jpg"
     social_links:
-      linkedin: "#"
-      github: "#"
+      linkedin: "https://www.linkedin.com/in/myahya22/"
+      github: "https://github.com/UserYahya"
       wikipedia: "https://meta.wikimedia.org/wiki/User:Yahya"
       email: "mailto:yahya@bnwp.org"
 
