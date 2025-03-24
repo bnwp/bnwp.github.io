@@ -8,7 +8,7 @@ role: তহবিল পরিচালনা ও রিপোর্টিং
 username: MdsShakil
 location: বাংলাদেশ
 email: shakil@bnwp.org
-img: "https://static.wikitide.net/mymensinghwiki/6/67/Shakil_Hosen.jpg"
+img: "https://upload.wikimedia.org/wikipedia/commons/e/e1/Shakil_in_2025.jpg"
 ---
 শাকিল হোসেন একজন উইকিমিডিয়া স্টুয়ার্ড ও ঢাকা উইকিমিডিয়া সম্প্রদায়ের সহ-সমন্বয়ক। শাকিল ২০১৯ সাল থেকে উইকিমিডিয়া প্রকল্পে সক্রিয়, তিনি মূলত বাংলা উইকিপিডিয়ায় অবদান রাখেন, যেখানে তিনি একজন প্রশাসক ও গোপনাকারী হিসেবে দায়িত্ব পালন করছেন। এছাড়াও, তিনি বাংলা উইকিবইয়েরও একজন প্রশাসক। 
 
