@@ -5,7 +5,7 @@ teams:
     - technical
 username: Maruf
 location: Bangladesh
-email: aishikrehman@gmail.com
+email: maruf.cappro21@gmail.com
 ---
 
 হাই! আমি **মারুফ হাসান** - একজন জ্ঞান অন্বেষণকারী ও প্রযুক্তি প্রেমিক। বর্তমানে আমি খুলনা প্রকৌশল ও প্রযুক্তি বিশ্ববিদ্যালয়ে স্থাপত্য বিভাগে পড়াশোনা করছি।
