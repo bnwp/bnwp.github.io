@@ -3,7 +3,7 @@
   <div class="widget__content">
     <ul class="list-unstyled">
       {{ $i := 0 }}
-      {{ range ( first 3 ( where .Site.Pages "Type" "posts" ).ByDate ) }}
+      {{ range ( first 3 ( where .Site.RegularPages "Type" "posts" ).ByDate ) }}
       {{ $i = add $i 1 }}
       <li class="py-3 border-top">
         <a class="d-flex align-items-center" href="{{ .Permalink }}">

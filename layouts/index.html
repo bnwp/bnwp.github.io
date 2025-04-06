@@ -34,7 +34,7 @@
             <div>
                 <a type="button" href="/about/" class="btn btn-primary btn-md px-4 me-md-2 fw-bold">আরও জানুন</a>
                 <a type="button" href="https://meta.wikimedia.org/wiki/Bangla_WikiConnect"
-                    class="btn btn-outline-secondary btn-md px-4">মেটা'উইকিতে পড়ূন</a>
+                    class="btn btn-secondary btn-md px-4">মেটা'উইকিতে পড়ূন</a>
             </div>
         </div>
         <div class="col-lg-4 offset-lg-1 p-0 ">
@@ -74,22 +74,23 @@
 {{/* Our Porjects */}}
 <section class="container py-5">
     <h2 class="text-center mb-5 fw-bold">আমাদের প্রকল্পসমূহ</h2>
-    
+
     <div class="row row-cols-1 row-cols-sm-3 g-4">
         {{ range where .Site.RegularPages "Section" "projects"}}
-         <div class="col">
+        <div class="col">
             <div class="d-inline-flex align-items-center justify-content-center rounded-3 mb-4">
-              <img src="{{.Params.Logo}}" alt="" width="auto" height="100px">
+                <img src="{{.Params.Logo}}" alt="" width="auto" height="100px">
             </div>
             <h4 class="fw-semibold mb-0 text-body-emphasis">{{ .Title }}</h4>
-            <a class="py-3 d-block" href="{{.RelPermalink}}">{{i18n "ViewDetails"}} <i class="bi bi-arrow-right-circle-fill"></i></a>
+            <a class="py-3 d-block" href="{{.RelPermalink}}">{{i18n "ViewDetails"}} <i
+                    class="bi bi-arrow-right-circle-fill"></i></a>
             <h5 class="mb-3">
                 ◉ শুরুর তারিখ: {{.Params.Est }};
                 ◉ বর্তমান অবস্থা: সক্রিয়
                 ◉ আসন্ন সংস্করণ: ২০২৫; ◉ দল: দেখুন
             </h5>
-            {{/*  <p class="text-body-secondary">{{ .Params.Lead | truncate 100}}
-                </p>  */}}
+            {{/* <p class="text-body-secondary">{{ .Params.Lead | truncate 100}}
+            </p> */}}
         </div>
         {{ end }}
     </div>
@@ -141,12 +142,13 @@
                         alt="{{.Title}}" title="{{.Title}}">
                 </div>
                 <h3 class="cots__name fw-normal">{{.Title}}</h3>
-                {{/*  <small class="d-block">
+                {{/* <small class="d-block">
                     <a href="https://bn.wikipedia.org/wiki/User:{{.Title}}">@{{.Params.username}}</a>
-                </small>  */}}
+                </small> */}}
                 <small class="d-block">@{{.Params.username}}</small>
-                {{/*  <small class="cots__role">{{ with .Params.role }}{{.}}{{else}}{{i18n "member"}}{{end}}</small>  */}}
-                <p><a class="py-3 d-block" href="{{.RelPermalink}}">{{i18n "ViewDetails"}} <i class="bi bi-arrow-right-circle-fill"></i></a></p>
+                {{/* <small class="cots__role">{{ with .Params.role }}{{.}}{{else}}{{i18n "member"}}{{end}}</small> */}}
+                <p><a class="py-3 d-block" href="{{.RelPermalink}}">{{i18n "ViewDetails"}} <i
+                            class="bi bi-arrow-right-circle-fill"></i></a></p>
             </div>
         </div>
         {{ end }}
@@ -155,15 +157,27 @@
 
 
 {{/* Our Partners */}}
-<section class="container my-5 text-center">
+<section class="container my-5 text-center py-5">
     <h2 class="my-5">Our Partners</h2>
-    <div class="d-flex flex-wrap" style="justify-content: center; gap: 3rem">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Wikimedia_Foundation_logo_-_vertical.svg/512px-Wikimedia_Foundation_logo_-_vertical.svg.png"
-            alt="Wikimedia Foundation" style="height: 60px; width:auto">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Wikimedia_Bangladesh_logo.svg/460px-Wikimedia_Bangladesh_logo.svg.png"
-            alt="Wikimedia Bangladesh" style="height: 60px; width:auto">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/WikiNandini_text_logo_2024.svg/320px-WikiNandini_text_logo_2024.svg.png"
-            alt="WikiNandini" style="height: 60px; width:auto">
+    <div class="d-flex flex-wrap" style="justify-content: center; gap: 1rem">
+        <div style="margin-right: 25px;">
+            <div class="text-secondary bg-light p-4">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Wikimedia_Foundation_logo_-_vertical.svg/512px-Wikimedia_Foundation_logo_-_vertical.svg.png"
+                    alt="Wikimedia Foundation" style="height: 80px; width:auto">
+            </div>
+        </div>
+        <div style=" margin-right: 25px;">
+            <div class="text-secondary bg-light p-4">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/WikiNandini_text_logo_2024.svg/320px-WikiNandini_text_logo_2024.svg.png"
+            alt="WikiNandini" style="height: 80px; width:auto">
+            </div>
+        </div>
+        <div style="margin-right: 25px;">
+            <div class="text-secondary bg-light p-4">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Wikimedia_Bangladesh_logo.svg/460px-Wikimedia_Bangladesh_logo.svg.png"
+            alt="Wikimedia Bangladesh" style="height: 80px; width:auto">
+            </div>
+        </div>
     </div>
 </section>
 {{ end }}
