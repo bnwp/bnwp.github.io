@@ -7,9 +7,12 @@
       <h3 id="articleTitle" itemprop="headline">{{ .Title }}</h3>
       <div id="articleAuthor" itemprop="author" itemscope itemtype="https://schema.org/Person">
         <i class="bi bi-person-fill-check pe-1"></i>
-        <a itemprop="url"
-          href="{{ absLangURL "/persona/" }}{{ .Params.User | urlize }}">
-          <span itemprop="name">{{ .Params.User }}</span>
+        <a itemprop="url" href="{{ absLangURL "/persona/" }}{{ .Params.User | urlize }}">
+          {{ $username := .Params.User }}
+          {{ $persona := first 1 (where (where .Site.RegularPages "Section" "persona") "Params.Username" $username) }}
+          {{ with index $persona 0 }}
+          <span itemprop="name">{{ .Title }}</span>
+          {{ end }}
         </a>
       </div>
       <span id="articleTags" class="d-block">
