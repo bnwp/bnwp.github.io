@@ -1,7 +1,7 @@
 ---
 title: "বাংলা উইকিউক্তিতে শুরু হলো উক্তি প্রতিযোগিতা ২০২৫: অংশগ্রহণ করুন এবং পুরস্কার জিতুন"
 date: 2025-04-07
-image: 
+image: https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Quote_competition_2025.jpg/640px-Quote_competition_2025.jpg
 tags: 
   - wikiquote
   - contest
