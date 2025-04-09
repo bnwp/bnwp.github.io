@@ -1,5 +1,6 @@
 ---
 title: "বাংলা উইকিপিডিয়া: আমাদের ভাষায় জ্ঞানের মুক্ত ভান্ডার"
+date: 2025-04-10
 image: https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Wikipedia-logo-v2-bn.svg/800px-Wikipedia-logo-v2-bn.svg.png
 tags: 
   - Wikipedia
