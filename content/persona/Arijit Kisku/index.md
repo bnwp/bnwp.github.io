@@ -1,11 +1,11 @@
 ---
 title: অরিজিত কিস্কু
-name: অরিজিত কিস্কু
+name: অরিজিৎ কিস্কু
 teams:
     - wikivoyage
 role: আয়োজক, উইকিভ্রমণ নিবন্ধ প্রতিযোগিতা, ২০২৫
 username: Arijit Kisku
-location: বাংলাদেশ
+location: ভারত
 email:
 img: 
 ---
