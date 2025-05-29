@@ -18,11 +18,11 @@ languages:
     title: বাংলা উইকিসংযোগ
     weight: 1
     params:
-      subtitle: "উইকিমিডিয়ানদের যৌথ উদ্যোগ"
+      subtitle: "উইকিমিডিয়ানদের একটি সম্মিলিত উদ্যোগ"
       author:
-        name: ঐশিক রেহমান
-        jobtitle: উইকিমিডিয়ান ও অভিধানকার (বিসিএসই)
-      description: বাংলা উইকিসংযোগ একটি সহযোগিতামূলক উদ্যোগ যা বাংলা ভাষায় উইকিপিডিয়ার বিষয়বস্তু বৃদ্ধি এবং সম্প্রসারণের উপর দৃষ্টি নিবদ্ধ করে।
+        name: বাংলা উইকিসংযোগ টিম
+        jobtitle: উইকিমিডিয়া সম্প্রদায়
+      description: বাংলা উইকিসংযোগ একটি সম্মিলিত প্রচেষ্টা যা বাংলা ভাষার উইকিপিডিয়া ও অন্যান্য উইকিমিডিয়া প্রকল্পে অবদান বাড়াতে লক্ষ্য করে।
       cse: 458e08bf4d1094c8e
   en:
     disabled: false
@@ -33,54 +33,53 @@ languages:
     title: Bangla WikiConnect
     weight: 2
     params:
-      subtitle: "A joint effort of Wikimedians"
+      subtitle: "A collaborative initiative by Wikimedians"
       author:
-        name: Aishik Rehman
-        jobtitle: Wikimedian and Lexicolgist (BCSE)
-      description: a Bengali computational linguist and developer with a background in computer science and engineering.
+        name: Bangla WikiConnect Team
+        jobtitle: Wikimedia Community
+      description: Bangla WikiConnect is a collaborative initiative focused on expanding content in the Bengali language on Wikipedia and other Wikimedia projects.
       cse: 02da3ac110b6e40d1
 
 Params:
-  defaultColorMode: "light" #Changing this require some changes to colormode.js script, Otherwise it won't work
-  activateColorModeToogler: true #To activate color mode dark/light toogler
-  activatejQuery: false #In case we need jQuery
-  activateGlobalMenu: false #If we want to use Global Menu in case
-  useBootstrapMod: true #Mod of Bootsrap 5.3.3, If we don't want to use the mod, we need to set the BootstrapCDNVersion
-  useBootstrapIcons: true #To use Botstrap Icons. Recommended is "true"
-  userBootstrapBundleJS: true #Bootstarp Bundle Js
-  BootstrapCDNVersion: "5.3.3" #Doesnt work if useBootstrapMod is "true", To apply this, we must set useBootstrapMod to false
-  defaultLang: bn #Set it the value of same as DefaultContentLanguage, use to check
+  defaultColorMode: "light"
+  activateColorModeToogler: true
+  activatejQuery: false
+  activateGlobalMenu: false
+  useBootstrapMod: true
+  useBootstrapIcons: true
+  userBootstrapBundleJS: true
+  BootstrapCDNVersion: "5.3.3"
+  defaultLang: bn
   google_site_verification: "0J8IfuFx-q_dRuc9I1q0tcVBKAMOTAN3gr27m5OwKzQ"
-  fb_app_id: "" #Facebook Application ID
+  fb_app_id: ""
   meta:
     name: Bangla WikiConnect
     alternateName: "WikiConnect"
   author:
-    name: Aishik Rehman
-    jobtitle: Wikimedian and Lexicolgist and CSEr.
-    url: "https://aishikrehman.com/about/"
-    email: contact@aishikrehman.com
+    name: Bangla WikiConnect Team
+    jobtitle: Wikimedia Contributors
+    url: "https://meta.wikimedia.org/wiki/Bangla_WikiConnect"
+    email: connect@bnwp.org
     locality: Bangladesh
   social:
     facebook: "https://facebook.com/banglawikiconnect"
     linkedin: "https://linkedin.com/in/banglawikiconnect"
-    # youtube: "https://youtube.com/@banglawikiconnect"
+    youtube: "https://youtube.com/@banglawikiconnect"
     github: "https://github.com/bnwp"
     wikipedia: "https://meta.wikimedia.org/wiki/Bangla_WikiConnect"
     #twitter: banglawikiconnect
   phone: "+880 1601660666"
-  picture: /assets/images/Aishik Rehman_Mymensingh_2019.jpg
+  picture: /assets/images/Bangla_WikiConnect_Logo.jpg
   github:
     user: bnwp
     repo: bnwp.github.io
     branch: main
   og:
-    image: /assets/images/Aishik Rehman-og-image.png
+    image: /assets/images/Bangla_WikiConnect_og_image.png
 
 taxonomies:
   tag: tags
   team: teams
-  
 
 markup:
   goldmark:
