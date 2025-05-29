@@ -1,36 +1,42 @@
 {{ define "main" }}
 <div class="page-title-overlap bg-primary py-5">
     <div class="container">
-        <div class="py-5 mb-4" style="display: grid; place-items: center;">
-            {{ partial "meta.breadcrumb.html" . }}
+        <div class="py-5 mb-4 text-center">
             <h3 class="text-light pt-1">{{ .Title }}</h3>
         </div>
     </div>
 </div>
+
 <div class="container">
-    <div class="bg-body py-5 rounded-4">
+    <div class="bg-body py-5 rounded-4 text-center">
         <section class="col-lg-8 m-auto pb-4 mb-3">
-            <form class="pt-2 px-4 pe-lg-0 ps-xl-5" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-                <input type="hidden" name="redirect" value="https://aishikrehman.com/">
-                <input type="hidden" name="access_key" value="7415cca4-262c-4f30-9a5f-1b4b0583b5ae">
-                <div class="row pb-4 gx-4 gy-3">
-                    <div class="col-12">
-                        <label class="form-label" for="name">{{i18n "name"}}</label>
-                        <input class="form-control" type="text" name="name" id="name" required>
-                    </div>
-                    <div class="col-12">
-                        <label class="form-label" for="email">{{i18n "email"}}</label>
-                        <input class="form-control" type="email" name="email" id="email" required>
-                    </div>
-                    <div class="col-12">
-                        <label class="form-label" for="message">{{i18n "message"}}</label>
-                        <textarea name="message" id="message" class="form-control" rows="10" required></textarea>
-                    </div>
-                </div>
-                <button class="btn btn-sm btn-primary w-100" type="submit">{{i18n "sentMessage"}}</button>
-                <div class="text-center mt-5">{{i18n "orsentMessage" | safeHTML}}
-                </div>
-            </form>
+            <h4>Contact Us</h4>
+            <p>Email: <a href="mailto:contact@banglawikiconnect.org">connect@bnwp.org</a></p>
+
+            <div class="d-flex justify-content-center gap-4 pt-3 fs-4">
+                <a href="https://facebook.com/banglawikiconnect" target="_blank" title="Facebook">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="https://twitter.com/bnWikiConnect" target="_blank" title="Twitter">
+                    <i class="bi bi-twitter-x"></i>
+                </a>
+                <a href="https://youtube.com/@banglawikiconnect" target="_blank" title="YouTube">
+                    <i class="bi bi-youtube"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/wikiconnect" target="_blank" title="LinkedIn">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+                <a href="https://t.me/banglawikiconnect" target="_blank" title="Telegram">
+                    <i class="bi bi-telegram"></i>
+                </a>
+                <a href="https://github.com/bnwp" target="_blank" title="GitHub">
+                    <i class="bi bi-github"></i>
+                </a>
+            </div>
+
+            <div class="pt-5">
+                <img src="/assets/images/Bangla_WikiConnect_Logo.jpg" alt="Bangla WikiConnect Logo" style="max-width: 150px;">
+            </div>
         </section>
     </div>
 </div>
