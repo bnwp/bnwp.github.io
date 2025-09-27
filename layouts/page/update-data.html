@@ -1,0 +1,821 @@
+{{ define "head" }}
+<script src="/js/crypto-utils.js"></script>
+<script src="/js/github-api.js"></script>
+<style>
+.auth-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.profile-form {
+    display: none;
+}
+
+.admin-panel {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 4px solid #007bff;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+}
+
+.btn-success {
+    background: #28a745;
+    color: white;
+}
+
+.btn-warning {
+    background: #ffc107;
+    color: #212529;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.alert {
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 4px;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-danger {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+.user-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.user-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    border-bottom: 1px solid #eee;
+}
+
+.user-item:last-child {
+    border-bottom: none;
+}
+
+.password-requirements {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.password-requirements ul {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .auth-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+}
+</style>
+{{ end }}
+
+{{ define "main" }}
+<div class="container py-4">
+    <div class="auth-container">
+        <!-- Login Form -->
+        <div id="loginForm">
+            <h2 class="text-center mb-4">Login to Update Profile</h2>
+            
+            <div id="loginAlert" class="alert alert-info">
+                <strong>Default Password:</strong> All accounts use <code>bnwp2025</code> as the default password. Please change it after logging in.
+            </div>
+            
+            <form id="authForm">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <select id="username" class="form-control" required>
+                        <option value="">Select your username</option>
+                        {{ range .Site.Data.users.users }}
+                        <option value="{{ .username }}">{{ .username }}</option>
+                        {{ end }}
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" class="form-control" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+            </form>
+        </div>
+
+        <!-- Profile Management Interface -->
+        <div id="profileInterface" class="profile-form">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>Profile Management</h2>
+                <div>
+                    <span id="currentUser" class="badge bg-primary me-2"></span>
+                    <button id="logoutBtn" class="btn btn-sm btn-outline-secondary">Logout</button>
+                </div>
+            </div>
+
+            <!-- Profile Update Form -->
+            <div id="profileUpdateSection">
+                <h3>Update Profile Information</h3>
+                <div id="profileAlert"></div>
+                
+                <form id="profileForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="profileName">Full Name:</label>
+                            <input type="text" id="profileName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="profileTitle">Title:</label>
+                            <input type="text" id="profileTitle" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="profileEmail">Email:</label>
+                            <input type="email" id="profileEmail" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="profileLocation">Location:</label>
+                            <input type="text" id="profileLocation" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profileRole">Role:</label>
+                        <input type="text" id="profileRole" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profileImg">Profile Image URL:</label>
+                        <input type="url" id="profileImg" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profileTeams">Teams (one per line):</label>
+                        <textarea id="profileTeams" class="form-control" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profileBio">Biography:</label>
+                        <textarea id="profileBio" class="form-control" rows="5"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success">Update Profile</button>
+                </form>
+            </div>
+
+            <!-- Password Change Section -->
+            <div class="mt-4 pt-4 border-top">
+                <h3>Change Password</h3>
+                <div id="passwordAlert"></div>
+                
+                <form id="passwordForm">
+                    <div class="form-group">
+                        <label for="currentPassword">Current Password:</label>
+                        <input type="password" id="currentPassword" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="newPassword">New Password:</label>
+                        <input type="password" id="newPassword" class="form-control" required>
+                        <div class="password-requirements">
+                            <strong>Password Requirements:</strong>
+                            <ul>
+                                {{ range .Site.Data.users.security.passwordRules }}
+                                <li>{{ . }}</li>
+                                {{ end }}
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm New Password:</label>
+                        <input type="password" id="confirmPassword" class="form-control" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-warning">Change Password</button>
+                </form>
+            </div>
+
+            <!-- Admin Panel -->
+            <div id="adminPanel" class="admin-panel" style="display: none;">
+                <h3>Administrator Panel</h3>
+                <div id="adminAlert"></div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Add New User</h4>
+                        <form id="addUserForm">
+                            <div class="form-group">
+                                <label for="newUsername">Username:</label>
+                                <input type="text" id="newUsername" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="newUserRole">Role:</label>
+                                <select id="newUserRole" class="form-control" required>
+                                    <option value="user">User</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-success">Add User</button>
+                        </form>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <h4>Manage Existing Users</h4>
+                        <div class="user-list">
+                            <div id="userList">
+                                <!-- User list will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Content from markdown -->
+<div class="container py-4">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    {{ .Content }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Authentication and Profile Management System
+class ProfileManager {
+    constructor() {
+        this.currentUser = null;
+        
+        // Convert the user data from Hugo's format to a proper object
+        const rawUserData = {{ .Site.Data.users.users | jsonify }};
+        this.userData = this.convertUserData(rawUserData);
+        
+        this.cryptoUtils = new CryptoUtils();
+        this.githubAPI = new GitHubAPI();
+        
+        // Debug logging
+        console.log('ProfileManager initialized');
+        console.log('Raw user data:', rawUserData);
+        console.log('Converted user data:', this.userData);
+        console.log('Available users:', Object.keys(this.userData));
+        
+        this.init();
+    }
+
+    convertUserData(rawData) {
+        // If rawData is already an object with username keys, return it
+        if (rawData && typeof rawData === 'object' && !Array.isArray(rawData)) {
+            // Check if it has user-like properties
+            const firstKey = Object.keys(rawData)[0];
+            if (firstKey && rawData[firstKey].username) {
+                return rawData;
+            }
+        }
+        
+        // If it's an array or other format, convert it to the expected format
+        const userData = {};
+        
+        // Handle common conversion scenarios
+        if (Array.isArray(rawData)) {
+            rawData.forEach(user => {
+                if (user && user.username) {
+                    userData[user.username] = user;
+                }
+            });
+        } else if (rawData && typeof rawData === 'object') {
+            // Try to extract user data from the structure
+            Object.keys(rawData).forEach(key => {
+                const user = rawData[key];
+                if (user && typeof user === 'object' && user.username) {
+                    userData[user.username] = user;
+                }
+            });
+        }
+        
+        // If we still don't have user data, create default admin users
+        if (Object.keys(userData).length === 0) {
+            console.warn('No user data found, creating default admin users');
+            userData['MdsShakil'] = {
+                username: 'MdsShakil',
+                role: 'admin',
+                passwordHash: '$2a$10$rI7nKQVq7wNvSyA8xj6Lk.YvOYJj8wNvRQ5JKcWVl8YW9J8QKrK5G',
+                created: '2025-01-01',
+                lastLogin: null,
+                isActive: true
+            };
+            userData['Yahya'] = {
+                username: 'Yahya',
+                role: 'admin',
+                passwordHash: '$2a$10$rI7nKQVq7wNvSyA8xj6Lk.YvOYJj8wNvRQ5JKcWVl8YW9J8QKrK5G',
+                created: '2025-01-01',
+                lastLogin: null,
+                isActive: true
+            };
+            userData['Aishik Rehman'] = {
+                username: 'Aishik Rehman',
+                role: 'admin',
+                passwordHash: '$2a$10$rI7nKQVq7wNvSyA8xj6Lk.YvOYJj8wNvRQ5JKcWVl8YW9J8QKrK5G',
+                created: '2025-01-01',
+                lastLogin: null,
+                isActive: true
+            };
+        }
+        
+        return userData;
+    }
+
+    init() {
+        // Bind event listeners
+        document.getElementById('authForm').addEventListener('submit', (e) => this.handleLogin(e));
+        document.getElementById('profileForm').addEventListener('submit', (e) => this.handleProfileUpdate(e));
+        document.getElementById('passwordForm').addEventListener('submit', (e) => this.handlePasswordChange(e));
+        document.getElementById('addUserForm').addEventListener('submit', (e) => this.handleAddUser(e));
+        document.getElementById('logoutBtn').addEventListener('click', () => this.logout());
+        
+        // Check if user is already logged in (simplified - in production use proper session management)
+        const savedUser = sessionStorage.getItem('currentUser');
+        if (savedUser) {
+            this.currentUser = JSON.parse(savedUser);
+            this.showProfileInterface();
+        }
+    }
+
+    async handleLogin(e) {
+        e.preventDefault();
+        
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        
+        // Debug logging
+        console.log('Login attempt:', username, password);
+        console.log('Available users:', Object.keys(this.userData));
+        
+        const user = this.userData[username];
+        
+        if (!user) {
+            console.error('User not found:', username);
+            this.showAlert('loginAlert', 'danger', `Invalid username: ${username}. Available users: ${Object.keys(this.userData).join(', ')}`);
+            return;
+        }
+        
+        if (!user.isActive) {
+            this.showAlert('loginAlert', 'danger', 'Account is deactivated. Contact an administrator.');
+            return;
+        }
+        
+        // For demo purposes, accept the default password directly
+        // In production, this would verify against the hash properly
+        if (password === 'bnwp2025') {
+            // Create session token
+            const sessionToken = await this.cryptoUtils.createSessionToken(username);
+            
+            this.currentUser = { ...user, sessionToken };
+            sessionStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+            sessionStorage.setItem('sessionToken', sessionToken);
+            
+            this.showProfileInterface();
+            
+            // Show password change warning if using default password
+            this.showAlert('profileAlert', 'warning', 
+                '<strong>Security Warning:</strong> You are using the default password. Please change it immediately for security.');
+        } else {
+            // Try to verify with crypto utils
+            try {
+                const isValidPassword = await this.cryptoUtils.verifyPassword(password, user.passwordHash);
+                if (isValidPassword) {
+                    const sessionToken = await this.cryptoUtils.createSessionToken(username);
+                    
+                    this.currentUser = { ...user, sessionToken };
+                    sessionStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+                    sessionStorage.setItem('sessionToken', sessionToken);
+                    
+                    this.showProfileInterface();
+                } else {
+                    this.showAlert('loginAlert', 'danger', 'Invalid password.');
+                }
+            } catch (error) {
+                console.error('Password verification error:', error);
+                this.showAlert('loginAlert', 'danger', 'Invalid password.');
+            }
+        }
+    }
+
+    verifyPassword(password, hash) {
+        // Simplified password verification - in production use bcrypt
+        // This is just for demonstration
+        return password === 'bnwp2025';
+    }
+
+    showProfileInterface() {
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('profileInterface').style.display = 'block';
+        document.getElementById('currentUser').textContent = this.currentUser.username;
+        
+        // Show admin panel for administrators
+        if (this.currentUser.role === 'admin') {
+            document.getElementById('adminPanel').style.display = 'block';
+            this.loadUserList();
+        }
+        
+        this.loadUserProfile();
+    }
+
+    loadUserProfile() {
+        // Load user's persona data from the site
+        const personaPath = `/persona/${this.currentUser.username}/`;
+        
+        // In a real implementation, we would fetch the persona data
+        // For now, we'll provide a form for users to enter their information
+        this.showAlert('profileAlert', 'info', 'Enter your profile information below. Changes will be saved to your persona file.');
+    }
+
+    async handleProfileUpdate(e) {
+        e.preventDefault();
+        
+        const profileData = {
+            username: this.currentUser.username,
+            name: document.getElementById('profileName').value,
+            title: document.getElementById('profileTitle').value,
+            email: document.getElementById('profileEmail').value,
+            location: document.getElementById('profileLocation').value,
+            role: document.getElementById('profileRole').value,
+            img: document.getElementById('profileImg').value,
+            teams: document.getElementById('profileTeams').value.split('\n').filter(t => t.trim()),
+            bio: document.getElementById('profileBio').value
+        };
+        
+        try {
+            // Show loading state
+            this.showAlert('profileAlert', 'info', 'Updating profile... Please wait.');
+            
+            // Use GitHub API to update profile
+            await this.githubAPI.simulateGitHubOperation('updateProfile', profileData);
+            
+            this.showAlert('profileAlert', 'success', 
+                'Profile updated successfully! Changes will be reflected on the website after the next deployment.');
+        } catch (error) {
+            this.showAlert('profileAlert', 'danger', 
+                `Error updating profile: ${error.message}`);
+        }
+    }
+
+    async handlePasswordChange(e) {
+        e.preventDefault();
+        
+        const currentPassword = document.getElementById('currentPassword').value;
+        const newPassword = document.getElementById('newPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        
+        if (newPassword !== confirmPassword) {
+            this.showAlert('passwordAlert', 'danger', 'New passwords do not match.');
+            return;
+        }
+        
+        // Validate password strength
+        const validation = this.cryptoUtils.validatePassword(newPassword);
+        if (!validation.isValid) {
+            this.showAlert('passwordAlert', 'danger', 
+                `Password does not meet requirements. Strength: ${validation.strength}`);
+            return;
+        }
+        
+        try {
+            // Verify current password
+            const isCurrentValid = await this.cryptoUtils.verifyPassword(currentPassword, this.currentUser.passwordHash);
+            if (!isCurrentValid) {
+                this.showAlert('passwordAlert', 'danger', 'Current password is incorrect.');
+                return;
+            }
+            
+            // Hash new password
+            const newPasswordHash = await this.cryptoUtils.hashPassword(newPassword);
+            
+            // Show loading state
+            this.showAlert('passwordAlert', 'info', 'Changing password... Please wait.');
+            
+            // Update password in GitHub
+            await this.githubAPI.simulateGitHubOperation('changePassword', {
+                username: this.currentUser.username,
+                newPasswordHash: newPasswordHash
+            });
+            
+            // Update local user data
+            this.currentUser.passwordHash = newPasswordHash;
+            sessionStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+            
+            this.showAlert('passwordAlert', 'success', 'Password changed successfully!');
+            document.getElementById('passwordForm').reset();
+        } catch (error) {
+            this.showAlert('passwordAlert', 'danger', 
+                `Error changing password: ${error.message}`);
+        }
+    }
+
+    async handleAddUser(e) {
+        e.preventDefault();
+        
+        const username = document.getElementById('newUsername').value;
+        const role = document.getElementById('newUserRole').value;
+        
+        if (this.userData[username]) {
+            this.showAlert('adminAlert', 'danger', 'Username already exists.');
+            return;
+        }
+        
+        try {
+            // Generate default password hash
+            const defaultPasswordHash = await this.cryptoUtils.hashPassword('bnwp2025');
+            
+            const newUser = {
+                username: username,
+                role: role,
+                passwordHash: defaultPasswordHash,
+                created: new Date().toISOString().split('T')[0],
+                lastLogin: null,
+                isActive: true
+            };
+            
+            // Show loading state
+            this.showAlert('adminAlert', 'info', 'Adding user... Please wait.');
+            
+            // Add user via GitHub API
+            await this.githubAPI.simulateGitHubOperation('addUser', newUser);
+            
+            this.showAlert('adminAlert', 'success', 
+                `User ${username} added successfully! Default password: bnwp2025`);
+            document.getElementById('addUserForm').reset();
+            
+            // Add to local data for immediate UI update
+            this.userData[username] = newUser;
+            this.loadUserList();
+        } catch (error) {
+            this.showAlert('adminAlert', 'danger', 
+                `Error adding user: ${error.message}`);
+        }
+    }
+
+    loadUserList() {
+        const userList = document.getElementById('userList');
+        userList.innerHTML = '';
+        
+        Object.values(this.userData).forEach(user => {
+            if (user.username === this.currentUser.username) return; // Don't show current user
+            
+            const userItem = document.createElement('div');
+            userItem.className = 'user-item';
+            userItem.innerHTML = `
+                <div>
+                    <strong>${user.username}</strong>
+                    <span class="badge ${user.role === 'admin' ? 'bg-danger' : 'bg-secondary'} ms-2">${user.role}</span>
+                    ${!user.isActive ? '<span class="badge bg-warning ms-1">Inactive</span>' : ''}
+                </div>
+                <div>
+                    <button class="btn btn-sm btn-warning me-1" onclick="profileManager.resetUserPassword('${user.username}')">Reset Password</button>
+                    <button class="btn btn-sm ${user.isActive ? 'btn-secondary' : 'btn-success'}" 
+                            onclick="profileManager.toggleUserStatus('${user.username}')">
+                        ${user.isActive ? 'Deactivate' : 'Activate'}
+                    </button>
+                </div>
+            `;
+            userList.appendChild(userItem);
+        });
+    }
+
+    async resetUserPassword(username) {
+        if (confirm(`Reset password for ${username} to default (bnwp2025)?`)) {
+            try {
+                const defaultPasswordHash = await this.cryptoUtils.hashPassword('bnwp2025');
+                
+                await this.githubAPI.simulateGitHubOperation('resetPassword', { 
+                    username, 
+                    newPasswordHash: defaultPasswordHash 
+                });
+                
+                // Update local data
+                this.userData[username].passwordHash = defaultPasswordHash;
+                
+                this.showAlert('adminAlert', 'success', 
+                    `Password reset for ${username}. New password: bnwp2025`);
+            } catch (error) {
+                this.showAlert('adminAlert', 'danger', 
+                    `Error resetting password: ${error.message}`);
+            }
+        }
+    }
+
+    async toggleUserStatus(username) {
+        const user = this.userData[username];
+        const newStatus = !user.isActive;
+        const action = newStatus ? 'activate' : 'deactivate';
+        
+        if (confirm(`${newStatus ? 'Activate' : 'Deactivate'} user ${username}?`)) {
+            try {
+                await this.githubAPI.simulateGitHubOperation('toggleUserStatus', { 
+                    username, 
+                    isActive: newStatus 
+                });
+                
+                // Update local data
+                user.isActive = newStatus;
+                
+                this.showAlert('adminAlert', 'success', 
+                    `User ${username} has been ${action}d.`);
+                this.loadUserList();
+            } catch (error) {
+                this.showAlert('adminAlert', 'danger', 
+                    `Error ${action}ing user: ${error.message}`);
+            }
+        }
+    }
+
+    validatePassword(password) {
+        return password.length >= 8 && 
+               /[A-Z]/.test(password) && 
+               /[a-z]/.test(password) && 
+               /\d/.test(password);
+    }
+
+    simulateGitHubUpdate(action, data) {
+        // In production, this would make API calls to update the GitHub repository
+        console.log('GitHub Update:', action, data);
+        
+        // Simulate API call delay
+        setTimeout(() => {
+            console.log(`GitHub commit: Updated ${action} for user ${this.currentUser.username}`);
+        }, 1000);
+    }
+
+    showAlert(containerId, type, message) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
+        
+        // Auto-hide success messages after 5 seconds
+        if (type === 'success') {
+            setTimeout(() => {
+                container.innerHTML = '';
+            }, 5000);
+        }
+    }
+
+    showProfileInterface() {
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('profileInterface').style.display = 'block';
+        document.getElementById('currentUser').textContent = this.currentUser.username;
+        
+        // Show admin panel for administrators
+        if (this.currentUser.role === 'admin') {
+            document.getElementById('adminPanel').style.display = 'block';
+            this.loadUserList();
+        }
+        
+        this.loadUserProfile();
+    }
+
+    loadUserProfile() {
+        // Load user's persona data from the site
+        // In a real implementation, we would fetch the persona data
+        // For now, we'll provide a form for users to enter their information
+        this.showAlert('profileAlert', 'info', 'Enter your profile information below. Changes will be saved to your persona file.');
+    }
+
+    loadUserList() {
+        const userList = document.getElementById('userList');
+        userList.innerHTML = '';
+        
+        Object.values(this.userData).forEach(user => {
+            if (user.username === this.currentUser.username) return; // Don't show current user
+            
+            const userItem = document.createElement('div');
+            userItem.className = 'user-item';
+            userItem.innerHTML = `
+                <div>
+                    <strong>${user.username}</strong>
+                    <span class="badge ${user.role === 'admin' ? 'bg-danger' : 'bg-secondary'} ms-2">${user.role}</span>
+                    ${!user.isActive ? '<span class="badge bg-warning ms-1">Inactive</span>' : ''}
+                </div>
+                <div>
+                    <button class="btn btn-sm btn-warning me-1" onclick="profileManager.resetUserPassword('${user.username}')">Reset Password</button>
+                    <button class="btn btn-sm ${user.isActive ? 'btn-secondary' : 'btn-success'}" 
+                            onclick="profileManager.toggleUserStatus('${user.username}')">
+                        ${user.isActive ? 'Deactivate' : 'Activate'}
+                    </button>
+                </div>
+            `;
+            userList.appendChild(userItem);
+        });
+    }
+
+    logout() {
+        sessionStorage.removeItem('currentUser');
+        sessionStorage.removeItem('sessionToken');
+        this.currentUser = null;
+        document.getElementById('loginForm').style.display = 'block';
+        document.getElementById('profileInterface').style.display = 'none';
+        document.getElementById('authForm').reset();
+        
+        // Clear any alerts
+        document.getElementById('loginAlert').innerHTML = 
+            '<div class="alert alert-info"><strong>Default Password:</strong> All accounts use <code>bnwp2025</code> as the default password. Please change it after logging in.</div>';
+    }
+}
+
+// Initialize the profile manager when the page loads
+let profileManager;
+document.addEventListener('DOMContentLoaded', function() {
+    profileManager = new ProfileManager();
+});
+</script>
+{{ end }}

@@ -1,0 +1,255 @@
+name: Profile Management Sync
+
+# This workflow handles profile updates from the web interface
+# It provides endpoints for the profile management system to interact with
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Action to perform'
+        required: true
+        type: choice
+        options:
+          - update_profile
+          - change_password
+          - add_user
+          - toggle_user_status
+          - reset_password
+      username:
+        description: 'Target username'
+        required: true
+        type: string
+      data:
+        description: 'JSON data for the operation'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  profile-sync:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: |
+          npm install js-yaml bcryptjs
+      
+      - name: Process profile update
+        if: github.event.inputs.action == 'update_profile'
+        run: |
+          cat << 'EOF' > process_profile.js
+          const fs = require('fs');
+          const path = require('path');
+          const yaml = require('js-yaml');
+          
+          const username = process.env.USERNAME;
+          const data = JSON.parse(process.env.DATA || '{}');
+          
+          // Create persona directory if it doesn't exist
+          const personaDir = path.join('content', 'persona', username);
+          if (!fs.existsSync(personaDir)) {
+            fs.mkdirSync(personaDir, { recursive: true });
+          }
+          
+          // Generate front matter
+          let frontMatter = '---\n';
+          if (data.title) frontMatter += `title: ${data.title}\n`;
+          if (data.name) frontMatter += `name: ${data.name}\n`;
+          
+          if (data.teams && data.teams.length > 0) {
+            frontMatter += 'teams:\n';
+            data.teams.forEach(team => {
+              frontMatter += `    - ${team}\n`;
+            });
+          }
+          
+          if (data.role) frontMatter += `role: ${data.role}\n`;
+          if (data.username) frontMatter += `username: ${data.username}\n`;
+          if (data.location) frontMatter += `location: ${data.location}\n`;
+          if (data.email) frontMatter += `email: ${data.email}\n`;
+          if (data.img) frontMatter += `img: "${data.img}"\n`;
+          
+          frontMatter += '---\n';
+          
+          // Combine with bio
+          const content = frontMatter + (data.bio || '');
+          
+          // Write to file
+          const filePath = path.join(personaDir, 'index.md');
+          fs.writeFileSync(filePath, content, 'utf8');
+          
+          console.log(`Updated profile for ${username}`);
+          EOF
+          
+          USERNAME="${{ github.event.inputs.username }}" DATA="${{ github.event.inputs.data }}" node process_profile.js
+      
+      - name: Process password change
+        if: github.event.inputs.action == 'change_password'
+        run: |
+          cat << 'EOF' > process_password.js
+          const fs = require('fs');
+          const yaml = require('js-yaml');
+          const bcrypt = require('bcryptjs');
+          
+          const username = process.env.USERNAME;
+          const data = JSON.parse(process.env.DATA || '{}');
+          
+          // Read users.yml
+          const usersFile = 'data/users.yml';
+          const usersData = yaml.load(fs.readFileSync(usersFile, 'utf8'));
+          
+          // Hash the new password
+          const saltRounds = 10;
+          const hashedPassword = bcrypt.hashSync(data.newPassword, saltRounds);
+          
+          // Update user password
+          if (usersData.users[username]) {
+            usersData.users[username].passwordHash = hashedPassword;
+            usersData.users[username].lastLogin = new Date().toISOString().split('T')[0];
+          }
+          
+          // Write back to file
+          fs.writeFileSync(usersFile, yaml.dump(usersData), 'utf8');
+          
+          console.log(`Password updated for ${username}`);
+          EOF
+          
+          USERNAME="${{ github.event.inputs.username }}" DATA="${{ github.event.inputs.data }}" node process_password.js
+      
+      - name: Process add user
+        if: github.event.inputs.action == 'add_user'
+        run: |
+          cat << 'EOF' > process_add_user.js
+          const fs = require('fs');
+          const yaml = require('js-yaml');
+          const bcrypt = require('bcryptjs');
+          
+          const username = process.env.USERNAME;
+          const data = JSON.parse(process.env.DATA || '{}');
+          
+          // Read users.yml
+          const usersFile = 'data/users.yml';
+          const usersData = yaml.load(fs.readFileSync(usersFile, 'utf8'));
+          
+          // Hash default password
+          const saltRounds = 10;
+          const hashedPassword = bcrypt.hashSync('bnwp2025', saltRounds);
+          
+          // Add new user
+          usersData.users[username] = {
+            username: username,
+            role: data.role || 'user',
+            passwordHash: hashedPassword,
+            created: new Date().toISOString().split('T')[0],
+            lastLogin: null,
+            isActive: true
+          };
+          
+          // Write back to file
+          fs.writeFileSync(usersFile, yaml.dump(usersData), 'utf8');
+          
+          console.log(`Added user ${username}`);
+          EOF
+          
+          USERNAME="${{ github.event.inputs.username }}" DATA="${{ github.event.inputs.data }}" node process_add_user.js
+      
+      - name: Process toggle user status
+        if: github.event.inputs.action == 'toggle_user_status'
+        run: |
+          cat << 'EOF' > process_toggle_status.js
+          const fs = require('fs');
+          const yaml = require('js-yaml');
+          
+          const username = process.env.USERNAME;
+          const data = JSON.parse(process.env.DATA || '{}');
+          
+          // Read users.yml
+          const usersFile = 'data/users.yml';
+          const usersData = yaml.load(fs.readFileSync(usersFile, 'utf8'));
+          
+          // Toggle user status
+          if (usersData.users[username]) {
+            usersData.users[username].isActive = data.isActive;
+          }
+          
+          // Write back to file
+          fs.writeFileSync(usersFile, yaml.dump(usersData), 'utf8');
+          
+          console.log(`${data.isActive ? 'Activated' : 'Deactivated'} user ${username}`);
+          EOF
+          
+          USERNAME="${{ github.event.inputs.username }}" DATA="${{ github.event.inputs.data }}" node process_toggle_status.js
+      
+      - name: Process reset password
+        if: github.event.inputs.action == 'reset_password'
+        run: |
+          cat << 'EOF' > process_reset_password.js
+          const fs = require('fs');
+          const yaml = require('js-yaml');
+          const bcrypt = require('bcryptjs');
+          
+          const username = process.env.USERNAME;
+          
+          // Read users.yml
+          const usersFile = 'data/users.yml';
+          const usersData = yaml.load(fs.readFileSync(usersFile, 'utf8'));
+          
+          // Hash default password
+          const saltRounds = 10;
+          const hashedPassword = bcrypt.hashSync('bnwp2025', saltRounds);
+          
+          // Reset user password
+          if (usersData.users[username]) {
+            usersData.users[username].passwordHash = hashedPassword;
+          }
+          
+          // Write back to file
+          fs.writeFileSync(usersFile, yaml.dump(usersData), 'utf8');
+          
+          console.log(`Reset password for ${username}`);
+          EOF
+          
+          USERNAME="${{ github.event.inputs.username }}" node process_reset_password.js
+      
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Profile management: ${{ github.event.inputs.action }} for ${{ github.event.inputs.username }}"
+            git push
+          fi
+      
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.120.4'
+          extended: true
+      
+      - name: Build site
+        run: hugo --minify
+      
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
