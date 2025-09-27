@@ -1,0 +1,17 @@
+# Hugo build artifacts
+public/
+hugo
+hugo.tar.gz
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
