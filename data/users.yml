@@ -1,0 +1,108 @@
+# User authentication and role management
+# Passwords are hashed using bcrypt 
+# Default password for all users is "bnwp2025"
+# Users should change their passwords after first login
+
+users:
+  MdsShakil:
+    username: MdsShakil
+    role: admin
+    passwordHash: "$2a$10$rI7nKQVq7wNvSyA8xj6Lk.YvOYJj8wNvRQ5JKcWVl8YW9J8QKrK5G"  # bcrypt hash of "bnwp2025"
+    created: "2025-01-01"
+    lastLogin: null
+    isActive: true
+  
+  Yahya:
+    username: Yahya
+    role: admin
+    passwordHash: "$2a$10$rI7nKQVq7wNvSyA8xj6Lk.YvOYJj8wNvRQ5JKcWVl8YW9J8QKrK5G"  # bcrypt hash of "bnwp2025"
+    created: "2025-01-01"
+    lastLogin: null
+    isActive: true
+  
+  "Aishik Rehman":
+    username: "Aishik Rehman"
+    role: admin
+    passwordHash: "$2a$10$rI7nKQVq7wNvSyA8xj6Lk.YvOYJj8wNvRQ5JKcWVl8YW9J8QKrK5G"  # bcrypt hash of "bnwp2025"
+    created: "2025-01-01"
+    lastLogin: null
+    isActive: true
+
+  # Regular users (team members)
+  "Arijit Kisku":
+    username: "Arijit Kisku"
+    role: user
+    passwordHash: "$2a$10$rI7nKQVq7wNvSyA8xj6Lk.YvOYJj8wNvRQ5JKcWVl8YW9J8QKrK5G"  # bcrypt hash of "bnwp2025"
+    created: "2025-01-01"
+    lastLogin: null
+    isActive: true
+  
+  Deloar:
+    username: Deloar
+    role: user
+    passwordHash: "$2a$10$rI7nKQVq7wNvSyA8xj6Lk.YvOYJj8wNvRQ5JKcWVl8YW9J8QKrK5G"  # bcrypt hash of "bnwp2025"
+    created: "2025-01-01"
+    lastLogin: null
+    isActive: true
+  
+  Khattab:
+    username: Khattab
+    role: user
+    passwordHash: "$2a$10$rI7nKQVq7wNvSyA8xj6Lk.YvOYJj8wNvRQ5JKcWVl8YW9J8QKrK5G"  # bcrypt hash of "bnwp2025"
+    created: "2025-01-01"
+    lastLogin: null
+    isActive: true
+  
+  "MS Sakib":
+    username: "MS Sakib"
+    role: user
+    passwordHash: "$2a$10$rI7nKQVq7wNvSyA8xj6Lk.YvOYJj8wNvRQ5JKcWVl8YW9J8QKrK5G"  # bcrypt hash of "bnwp2025"
+    created: "2025-01-01"
+    lastLogin: null
+    isActive: true
+  
+  Maruf:
+    username: Maruf
+    role: user
+    passwordHash: "$2a$10$rI7nKQVq7wNvSyA8xj6Lk.YvOYJj8wNvRQ5JKcWVl8YW9J8QKrK5G"  # bcrypt hash of "bnwp2025"
+    created: "2025-01-01"
+    lastLogin: null
+    isActive: true
+  
+  Riaz:
+    username: Riaz
+    role: user
+    passwordHash: "$2a$10$rI7nKQVq7wNvSyA8xj6Lk.YvOYJj8wNvRQ5JKcWVl8YW9J8QKrK5G"  # bcrypt hash of "bnwp2025"
+    created: "2025-01-01"
+    lastLogin: null
+    isActive: true
+  
+  Rifat:
+    username: Rifat
+    role: user
+    passwordHash: "$2a$10$rI7nKQVq7wNvSyA8xj6Lk.YvOYJj8wNvRQ5JKcWVl8YW9J8QKrK5G"  # bcrypt hash of "bnwp2025"
+    created: "2025-01-01"
+    lastLogin: null
+    isActive: true
+  
+  "আফতাবুজ্জামান":
+    username: "আফতাবুজ্জামান"
+    role: user
+    passwordHash: "$2a$10$rI7nKQVq7wNvSyA8xj6Lk.YvOYJj8wNvRQ5JKcWVl8YW9J8QKrK5G"  # bcrypt hash of "bnwp2025"
+    created: "2025-01-01"
+    lastLogin: null
+    isActive: true
+
+# Password security information
+security:
+  algorithm: "bcrypt"
+  rounds: 10
+  defaultPassword: "bnwp2025"
+  passwordChangeRequired: true
+  minPasswordLength: 8
+  passwordRules:
+    - "At least 8 characters long"
+    - "Must contain at least one uppercase letter"
+    - "Must contain at least one lowercase letter"
+    - "Must contain at least one number"
+    - "Special characters are recommended"
