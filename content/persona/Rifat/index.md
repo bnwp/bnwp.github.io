@@ -1,11 +1,10 @@
 ---
-title: ফাহিম শাহরিয়ার রিফাত
-name: ফাহিম শাহরিয়ার রিফাত
+title: মোঃ ফাহিম শাহরিয়ার রিফাত
+name: মোঃ ফাহিম শাহরিয়ার রিফাত
 teams:
     - technical
-role: 
 username: R1F4T
-location:
-email:
+location: বাংলাদেশ
+email: md3022480@gmail.com
 img: "https://upload.wikimedia.org/wikipedia/commons/8/8d/R1F4T.jpg"
 ---
