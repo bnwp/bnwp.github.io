@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cot on Bangla WikiConnect</title>
+    <link>//localhost:1313/en/teams/cot/</link>
+    <description>Recent content in Cot on Bangla WikiConnect</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <managingEditor>connect@bnwp.org (Bangla WikiConnect Team)</managingEditor>
+    <webMaster>connect@bnwp.org (Bangla WikiConnect Team)</webMaster>
+    <atom:link href="//localhost:1313/en/teams/cot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Aishik Rehman</title>
+      <link>//localhost:1313/en/persona/aishik-rehman/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>connect@bnwp.org (Bangla WikiConnect Team)</author>
+      <guid>//localhost:1313/en/persona/aishik-rehman/</guid>
+      <description>Hi! This is Aishik Rehman (বাংলা: ঐশিক রেহমান, IPA: o͡i̯ʃik rehoman), a practitioner in Computer Science and Engineering from Bangladesh. I am passionate about Human Language and Artificial Intelligence, focusing on expanding multilingual access to knowledge and developing open resources.&#xA;Active since 2018, I contribute to multilingual Wikimedia projects in Bengali, Bishnupriya Manipuri, English, and Assamese. All of my contributions on Wikimedia projects can be found via CentralAuth.</description>
+    </item>
+    <item>
+      <title>Deloar Akram</title>
+      <link>//localhost:1313/en/persona/deloar/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>connect@bnwp.org (Bangla WikiConnect Team)</author>
+      <guid>//localhost:1313/en/persona/deloar/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MS Sakib</title>
+      <link>//localhost:1313/en/persona/ms-sakib/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>connect@bnwp.org (Bangla WikiConnect Team)</author>
+      <guid>//localhost:1313/en/persona/ms-sakib/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Muhammad Yahya</title>
+      <link>//localhost:1313/en/persona/yahya/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>connect@bnwp.org (Bangla WikiConnect Team)</author>
+      <guid>//localhost:1313/en/persona/yahya/</guid>
+      <description>Yahya is a Wikimedia Steward and the Chief Coordinator of the Dhaka Wikimedia Community. He holds several advanced user rights across Wikimedia projects, including Administrator, Oversighter, and Interface Administrator on Bangla Wikipedia, his home wiki. He is also an Administrator on Wikidata and Bangla Wikivoyage, as well as a Central Notice Administrator.&#xA;Beyond his on-wiki contributions, Yahya has extensive experience in organizing edit-a-thons and off-wiki events. He was a member of the Wikimania 2025 Scholarship Working Group, a Core Organizing Team (COT) member for Wikimania Bangladesh 2022, and part of the Operations Team for Bangla Wikiconference 2024.</description>
+    </item>
+    <item>
+      <title>Riaz</title>
+      <link>//localhost:1313/en/persona/riaz/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>connect@bnwp.org (Bangla WikiConnect Team)</author>
+      <guid>//localhost:1313/en/persona/riaz/</guid>
+      <description>Riaz is a Bangladeshi Wikimedian. He has been contributing to Wikimedia projects since 2017. Currently, he serves as an administrator and CheckUser on Bangla Wikipedia. He is also a co-editor of WikiBarta, a magazine published by Wikimedia Bangladesh.</description>
+    </item>
+    <item>
+      <title>Shakil Hosen</title>
+      <link>//localhost:1313/en/persona/mdsshakil/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>connect@bnwp.org (Bangla WikiConnect Team)</author>
+      <guid>//localhost:1313/en/persona/mdsshakil/</guid>
+      <description>Shakil Hosen is a Wikimedia Steward and a community leader dedicated to Bangla Wikimedia projects. He is primarily active on Bangla Wikipedia, where he serves as an administrator and oversighter. Additionally, he is an administrator on Bangla Wikibooks. With extensive experience, he has organized on-wiki edit-a-thons and events, including Wikimania Bangladesh 2022, the Bangla WikiConference 2024, and many others.</description>
+    </item>
+  </channel>
+</rss>

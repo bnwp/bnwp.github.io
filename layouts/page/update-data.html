@@ -568,50 +568,261 @@ class ProfileManager {
     }
 
     async fetchExistingProfile(username, language) {
-        // Simulate fetching profile data from persona files
-        // In a real implementation, this would make API calls to fetch the markdown files
-        const filename = language === 'en' ? 'index.en.md' : 'index.md';
-        const profilePath = `/persona/${username}/${filename}`;
-        
         try {
-            // For demo purposes, we'll simulate some profile data based on the username
-            // In production, this would fetch from the actual markdown files
-            const mockProfiles = {
-                'MdsShakil': {
-                    name: language === 'bn' ? 'শাকিল হোসেন' : 'Shakil Hosen',
-                    title: language === 'bn' ? 'তহবিল পরিচালনা ও রিপোর্টিং' : 'Fund Management & Reporting',
-                    email: 'shakil@bnwp.org',
-                    location: language === 'bn' ? 'বাংলাদেশ' : 'Bangladesh',
-                    role: language === 'bn' ? 'তহবিল পরিচালনা ও রিপোর্টিং' : 'Fund Management & Reporting',
-                    teams: ['cot', 'technical'],
-                    img: 'https://upload.wikimedia.org/wikipedia/commons/e/e1/Shakil_in_2025.jpg',
-                    bio: language === 'bn' ? 'শাকিল হোসেন একজন উইকিমিডিয়া স্টুয়ার্ড ও ঢাকা উইকিমিডিয়া সম্প্রদায়ের সহ-সমন্বয়ক।' : 'Shakil Hosen is a Wikimedia Steward and co-coordinator of Dhaka Wikimedia Community.'
-                },
-                'Yahya': {
-                    name: language === 'bn' ? 'ইয়াহিয়া' : 'Yahya',
-                    title: language === 'bn' ? 'প্রশাসনিক কর্মকর্তা' : 'Administrative Officer',
-                    email: 'yahya@bnwp.org',
-                    location: language === 'bn' ? 'বাংলাদেশ' : 'Bangladesh',
-                    role: language === 'bn' ? 'প্রশাসনিক কর্মকর্তা' : 'Administrative Officer',
-                    teams: ['admin'],
-                    bio: language === 'bn' ? 'ইয়াহিয়া একজন অভিজ্ঞ প্রশাসনিক কর্মকর্তা।' : 'Yahya is an experienced administrative officer.'
-                },
-                'Aishik Rehman': {
-                    name: language === 'bn' ? 'আইশিক রহমান' : 'Aishik Rehman',
-                    title: language === 'bn' ? 'প্রযুক্তি বিশেষজ্ঞ' : 'Technology Specialist',
-                    email: 'aishik@bnwp.org',
-                    location: language === 'bn' ? 'বাংলাদেশ' : 'Bangladesh',
-                    role: language === 'bn' ? 'প্রযুক্তি বিশেষজ্ঞ' : 'Technology Specialist',
-                    teams: ['technical', 'admin'],
-                    bio: language === 'bn' ? 'আইশিক রহমান একজন দক্ষ প্রযুক্তি বিশেষজ্ঞ।' : 'Aishik Rehman is a skilled technology specialist.'
-                }
-            };
+            // Convert username to Hugo URL slug format
+            const urlSlug = this.getUsernameSlug(username);
+            console.log(`Mapped username "${username}" to URL slug "${urlSlug}"`);
             
-            return mockProfiles[username] || null;
+            // Try to fetch from the raw GitHub content first
+            const success = await this.fetchFromGitHub(username, language);
+            if (success) {
+                return success;
+            }
+            
+            // Fallback: Parse from the rendered HTML page (for development/preview)
+            return await this.fetchFromHTMLPage(urlSlug, language);
         } catch (error) {
             console.error('Error fetching profile:', error);
             return null;
         }
+    }
+
+    getUsernameSlug(username) {
+        // Convert username to Hugo's URL slug format
+        // Hugo converts folder names to lowercase and replaces spaces with hyphens
+        return username.toLowerCase().replace(/\s+/g, '-');
+    }
+
+    async fetchFromGitHub(username, language) {
+        // Try to fetch the raw markdown file from GitHub
+        const filename = language === 'en' ? 'index.en.md' : 'index.md';
+        const githubRawUrl = `https://raw.githubusercontent.com/bnwp/bnwp.github.io/main/content/persona/${encodeURIComponent(username)}/${filename}`;
+        
+        try {
+            console.log(`Fetching from GitHub: ${githubRawUrl}`);
+            const response = await fetch(githubRawUrl);
+            
+            if (!response.ok) {
+                console.log(`GitHub file not found: ${githubRawUrl} (${response.status})`);
+                return null;
+            }
+            
+            const markdownContent = await response.text();
+            console.log(`Fetched GitHub content for ${username} (${language}):`, markdownContent.substring(0, 200) + '...');
+            
+            // Parse the YAML frontmatter and content
+            const profileData = this.parseMarkdownFile(markdownContent);
+            console.log('Parsed GitHub profile data:', profileData);
+            
+            return profileData;
+        } catch (error) {
+            console.log('Failed to fetch from GitHub:', error.message);
+            return null;
+        }
+    }
+
+    async fetchFromHTMLPage(urlSlug, language) {
+        // Fallback: fetch from the rendered HTML page (development mode)
+        const pageUrl = language === 'en' ? `/en/persona/${urlSlug}/` : `/persona/${urlSlug}/`;
+        
+        try {
+            console.log(`Fetching from HTML page: ${pageUrl}`);
+            const response = await fetch(pageUrl);
+            
+            if (!response.ok) {
+                console.log(`HTML page not found: ${pageUrl} (${response.status})`);
+                return null;
+            }
+            
+            const htmlContent = await response.text();
+            
+            // Parse the profile data from the HTML page
+            const profileData = this.parseHTMLProfile(htmlContent);
+            console.log('Parsed HTML profile data:', profileData);
+            
+            return profileData;
+        } catch (error) {
+            console.log('Failed to fetch from HTML page:', error.message);
+            return null;
+        }
+    }
+
+    parseHTMLProfile(htmlContent) {
+        // Create a temporary DOM element to parse the HTML
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlContent, 'text/html');
+        
+        try {
+            // Extract profile information from the HTML structure
+            const profileData = {};
+            
+            // Get name from the main heading (h1)
+            const nameElement = doc.querySelector('main h1');
+            if (nameElement) {
+                profileData.name = nameElement.textContent.trim();
+            }
+            
+            // Get title from the h5 element after the name
+            const titleElement = doc.querySelector('main h1 + h5');
+            if (titleElement) {
+                profileData.title = titleElement.textContent.trim();
+                profileData.role = profileData.title; // Use title as role
+            }
+            
+            // Get contact info more carefully from the h5 element with links
+            const contactH5 = doc.querySelector('main h5:has(a)');
+            if (contactH5) {
+                // Get username from Wikipedia link
+                const wikiLink = contactH5.querySelector('a[href*="wikipedia.org"]');
+                if (wikiLink) {
+                    profileData.username = wikiLink.textContent.trim();
+                }
+                
+                // Get email from mailto link
+                const emailLink = contactH5.querySelector('a[href^="mailto:"]');
+                if (emailLink) {
+                    profileData.email = emailLink.getAttribute('href').replace('mailto:', '');
+                }
+                
+                // Get location by parsing the text content more carefully
+                const contactText = contactH5.textContent;
+                console.log('Contact text for parsing:', contactText);
+                
+                // Location is typically the last text node after the email
+                if (emailLink) {
+                    const emailText = emailLink.textContent;
+                    const afterEmail = contactText.substring(contactText.indexOf(emailText) + emailText.length).trim();
+                    if (afterEmail) {
+                        profileData.location = afterEmail;
+                    }
+                } else {
+                    // Fallback: try to extract location from known patterns
+                    const locationPatterns = ['বাংলাদেশ', 'Bangladesh', 'ঢাকা', 'Dhaka'];
+                    for (const pattern of locationPatterns) {
+                        if (contactText.includes(pattern)) {
+                            profileData.location = pattern;
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            // Get bio from the first paragraph after the heading structure
+            const bioElement = doc.querySelector('main .container p, main p:not(:has(a))');
+            if (bioElement) {
+                profileData.bio = bioElement.textContent.trim();
+            }
+            
+            // Try to extract teams/groups from the content if available
+            // This is a simple heuristic - could be improved
+            const allText = doc.querySelector('main').textContent;
+            const teamKeywords = ['admin', 'technical', 'cot', 'administrator', 'প্রশাসক'];
+            profileData.teams = teamKeywords.filter(keyword => 
+                allText.toLowerCase().includes(keyword.toLowerCase())
+            );
+            
+            // Try to extract profile image from img elements
+            const imgElement = doc.querySelector('main img, img[alt*="' + (profileData.name || '') + '"]');
+            if (imgElement) {
+                const imgSrc = imgElement.src || imgElement.getAttribute('src');
+                if (imgSrc && !imgSrc.includes('404') && !imgSrc.includes('placeholder')) {
+                    profileData.img = imgSrc;
+                }
+            }
+            
+            // Set default values for missing fields
+            profileData.teams = profileData.teams || [];
+            profileData.img = profileData.img || '';
+            profileData.location = profileData.location || '';
+            
+            console.log('Extracted profile data from HTML:', profileData);
+            return profileData;
+        } catch (error) {
+            console.error('Error parsing HTML profile:', error);
+            return null;
+        }
+    }
+
+    parseMarkdownFile(content) {
+        // Parse YAML frontmatter and markdown content
+        const frontmatterRegex = /^---\n([\s\S]*?)\n---\n?([\s\S]*)$/;
+        const match = content.match(frontmatterRegex);
+        
+        if (!match) {
+            console.warn('No frontmatter found in markdown file');
+            return null;
+        }
+        
+        const [, yamlContent, bioContent] = match;
+        
+        try {
+            // Parse YAML frontmatter
+            const profileData = this.parseYAMLFrontmatter(yamlContent.trim());
+            
+            // Add bio content
+            profileData.bio = bioContent.trim();
+            
+            return profileData;
+        } catch (error) {
+            console.error('Error parsing markdown frontmatter:', error);
+            return null;
+        }
+    }
+
+    parseYAMLFrontmatter(yamlString) {
+        // Simple YAML parser for frontmatter
+        const result = {};
+        const lines = yamlString.split('\n');
+        
+        let currentKey = null;
+        let currentArray = null;
+        
+        for (const line of lines) {
+            const trimmedLine = line.trim();
+            
+            if (!trimmedLine || trimmedLine.startsWith('#')) {
+                continue; // Skip empty lines and comments
+            }
+            
+            // Handle array items
+            if (trimmedLine.startsWith('- ')) {
+                if (currentArray) {
+                    currentArray.push(trimmedLine.substring(2).trim());
+                }
+                continue;
+            }
+            
+            // Handle key-value pairs
+            const colonIndex = trimmedLine.indexOf(':');
+            if (colonIndex === -1) {
+                continue;
+            }
+            
+            const key = trimmedLine.substring(0, colonIndex).trim();
+            const value = trimmedLine.substring(colonIndex + 1).trim();
+            
+            if (value === '') {
+                // This might be the start of an array
+                currentKey = key;
+                currentArray = [];
+                result[key] = currentArray;
+            } else {
+                // Regular key-value pair
+                currentKey = null;
+                currentArray = null;
+                
+                // Remove quotes if present
+                let parsedValue = value;
+                if ((parsedValue.startsWith('"') && parsedValue.endsWith('"')) ||
+                    (parsedValue.startsWith("'") && parsedValue.endsWith("'"))) {
+                    parsedValue = parsedValue.slice(1, -1);
+                }
+                
+                result[key] = parsedValue;
+            }
+        }
+        
+        return result;
     }
 
     async handleProfileUpdate(e) {
@@ -859,12 +1070,7 @@ class ProfileManager {
         this.loadUserProfile();
     }
 
-    loadUserProfile() {
-        // Load user's persona data from the site
-        // In a real implementation, we would fetch the persona data
-        // For now, we'll provide a form for users to enter their information
-        this.showAlert('profileAlert', 'info', 'Enter your profile information below. Changes will be saved to your persona file.');
-    }
+
 
     loadUserList() {
         const userList = document.getElementById('userList');

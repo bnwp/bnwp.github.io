@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Language on Bangla WikiConnect</title>
+    <link>//localhost:1313/en/teams/language/</link>
+    <description>Recent content in Language on Bangla WikiConnect</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <managingEditor>connect@bnwp.org (Bangla WikiConnect Team)</managingEditor>
+    <webMaster>connect@bnwp.org (Bangla WikiConnect Team)</webMaster>
+    <atom:link href="//localhost:1313/en/teams/language/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Aishik Rehman</title>
+      <link>//localhost:1313/en/persona/aishik-rehman/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>connect@bnwp.org (Bangla WikiConnect Team)</author>
+      <guid>//localhost:1313/en/persona/aishik-rehman/</guid>
+      <description>Hi! This is Aishik Rehman (বাংলা: ঐশিক রেহমান, IPA: o͡i̯ʃik rehoman), a practitioner in Computer Science and Engineering from Bangladesh. I am passionate about Human Language and Artificial Intelligence, focusing on expanding multilingual access to knowledge and developing open resources.&#xA;Active since 2018, I contribute to multilingual Wikimedia projects in Bengali, Bishnupriya Manipuri, English, and Assamese. All of my contributions on Wikimedia projects can be found via CentralAuth.</description>
+    </item>
+  </channel>
+</rss>

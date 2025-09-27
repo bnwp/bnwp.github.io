@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Technical on Bangla WikiConnect</title>
+    <link>//localhost:1313/en/teams/technical/</link>
+    <description>Recent content in Technical on Bangla WikiConnect</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <managingEditor>connect@bnwp.org (Bangla WikiConnect Team)</managingEditor>
+    <webMaster>connect@bnwp.org (Bangla WikiConnect Team)</webMaster>
+    <atom:link href="//localhost:1313/en/teams/technical/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Aftabuzzaman</title>
+      <link>//localhost:1313/en/persona/%E0%A6%86%E0%A6%AB%E0%A6%A4%E0%A6%BE%E0%A6%AC%E0%A7%81%E0%A6%9C%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%A8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>connect@bnwp.org (Bangla WikiConnect Team)</author>
+      <guid>//localhost:1313/en/persona/%E0%A6%86%E0%A6%AB%E0%A6%A4%E0%A6%BE%E0%A6%AC%E0%A7%81%E0%A6%9C%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%A8/</guid>
+      <description>Hi! This is Aishik Rehman (বাংলা: ঐশিক রেহমান, IPA: o͡i̯ʃik rehoman), a practitioner in Computer Science and Engineering from Bangladesh. I am passionate about Human Language and Artificial Intelligence, focusing on expanding multilingual access to knowledge and developing open resources.&#xA;Active since 2018, I contribute to multilingual Wikimedia projects in Bengali, Bishnupriya Manipuri, English, and Assamese. All of my contributions on Wikimedia projects can be found via CentralAuth.</description>
+    </item>
+    <item>
+      <title>Aishik Rehman</title>
+      <link>//localhost:1313/en/persona/aishik-rehman/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>connect@bnwp.org (Bangla WikiConnect Team)</author>
+      <guid>//localhost:1313/en/persona/aishik-rehman/</guid>
+      <description>Hi! This is Aishik Rehman (বাংলা: ঐশিক রেহমান, IPA: o͡i̯ʃik rehoman), a practitioner in Computer Science and Engineering from Bangladesh. I am passionate about Human Language and Artificial Intelligence, focusing on expanding multilingual access to knowledge and developing open resources.&#xA;Active since 2018, I contribute to multilingual Wikimedia projects in Bengali, Bishnupriya Manipuri, English, and Assamese. All of my contributions on Wikimedia projects can be found via CentralAuth.</description>
+    </item>
+    <item>
+      <title>Khattab Hasan</title>
+      <link>//localhost:1313/en/persona/khattab/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>connect@bnwp.org (Bangla WikiConnect Team)</author>
+      <guid>//localhost:1313/en/persona/khattab/</guid>
+      <description>Hi! This is Aishik Rehman (বাংলা: ঐশিক রেহমান, IPA: o͡i̯ʃik rehoman), a practitioner in Computer Science and Engineering from Bangladesh. I am passionate about Human Language and Artificial Intelligence, focusing on expanding multilingual access to knowledge and developing open resources.&#xA;Active since 2018, I contribute to multilingual Wikimedia projects in Bengali, Bishnupriya Manipuri, English, and Assamese. All of my contributions on Wikimedia projects can be found via CentralAuth.</description>
+    </item>
+    <item>
+      <title>Maruf Hasan</title>
+      <link>//localhost:1313/en/persona/maruf/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>connect@bnwp.org (Bangla WikiConnect Team)</author>
+      <guid>//localhost:1313/en/persona/maruf/</guid>
+      <description>Hi! I&amp;rsquo;m Maruf Hasan (বাংলা: মারুফ হাসান, IPA: /maruf hasan/) a Wikipedian, full-stack web developer, and Windows app developer, passionate about knowledge sharing and open collaboration. Currently studying Architecture at Khulna University of Engineering &amp;amp; Technology, I love to combine technical skills with creative problem-solving in my work.&#xA;Since 2021, I’ve made 140,000+ edits and created 100+ Wikipedia articles, with five earning Good Article status. My contributions focus on Chemistry, Islam, and Translation, and I actively participate in WikiProject Chemistry and WikiProject Islam.</description>
+    </item>
+  </channel>
+</rss>

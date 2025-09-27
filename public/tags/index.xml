@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on বাংলা উইকিসংযোগ</title>
+    <link>//localhost:1313/tags/</link>
+    <description>Recent content in Tags on বাংলা উইকিসংযোগ</description>
+    <generator>Hugo</generator>
+    <language>bn-BD</language>
+    <managingEditor>connect@bnwp.org (বাংলা উইকিসংযোগ টিম)</managingEditor>
+    <webMaster>connect@bnwp.org (বাংলা উইকিসংযোগ টিম)</webMaster>
+    <lastBuildDate>Fri, 16 May 2025 00:00:00 +0600</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Contest</title>
+      <link>//localhost:1313/tags/contest/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>connect@bnwp.org (বাংলা উইকিসংযোগ টিম)</author>
+      <guid>//localhost:1313/tags/contest/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Wikibooks</title>
+      <link>//localhost:1313/tags/wikibooks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>connect@bnwp.org (বাংলা উইকিসংযোগ টিম)</author>
+      <guid>//localhost:1313/tags/wikibooks/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Wikipedia</title>
+      <link>//localhost:1313/tags/wikipedia/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>connect@bnwp.org (বাংলা উইকিসংযোগ টিম)</author>
+      <guid>//localhost:1313/tags/wikipedia/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Wikiquote</title>
+      <link>//localhost:1313/tags/wikiquote/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>connect@bnwp.org (বাংলা উইকিসংযোগ টিম)</author>
+      <guid>//localhost:1313/tags/wikiquote/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
