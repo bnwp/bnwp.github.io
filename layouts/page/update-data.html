@@ -200,6 +200,16 @@
                 <h3>Update Profile Information</h3>
                 <div id="profileAlert"></div>
                 
+                <!-- Profile Language Selection -->
+                <div class="form-group mb-3">
+                    <label for="profileLanguage">Profile Language:</label>
+                    <select id="profileLanguage" class="form-control">
+                        <option value="bn">বাংলা (Bengali)</option>
+                        <option value="en">English</option>
+                    </select>
+                    <small class="form-text text-muted">Select which language profile you want to update. Each user can have both Bengali and English profiles.</small>
+                </div>
+                
                 <form id="profileForm">
                     <div class="form-row">
                         <div class="form-group">
@@ -514,19 +524,103 @@ class ProfileManager {
     }
 
     loadUserProfile() {
-        // Load user's persona data from the site
-        const personaPath = `/persona/${this.currentUser.username}/`;
+        // Add event listener for profile language selection
+        document.getElementById('profileLanguage').addEventListener('change', () => {
+            this.loadProfileData();
+        });
         
-        // In a real implementation, we would fetch the persona data
-        // For now, we'll provide a form for users to enter their information
-        this.showAlert('profileAlert', 'info', 'Enter your profile information below. Changes will be saved to your persona file.');
+        // Load initial profile data
+        this.loadProfileData();
+    }
+
+    async loadProfileData() {
+        const selectedLanguage = document.getElementById('profileLanguage').value;
+        const username = this.currentUser.username;
+        
+        try {
+            // Attempt to load existing profile data
+            const profileData = await this.fetchExistingProfile(username, selectedLanguage);
+            
+            if (profileData) {
+                // Populate form with existing data
+                document.getElementById('profileName').value = profileData.name || '';
+                document.getElementById('profileTitle').value = profileData.title || '';
+                document.getElementById('profileEmail').value = profileData.email || '';
+                document.getElementById('profileLocation').value = profileData.location || '';
+                document.getElementById('profileRole').value = profileData.role || '';
+                document.getElementById('profileImg').value = profileData.img || '';
+                document.getElementById('profileTeams').value = profileData.teams ? profileData.teams.join('\n') : '';
+                document.getElementById('profileBio').value = profileData.bio || '';
+                
+                this.showAlert('profileAlert', 'success', 
+                    `Loaded existing ${selectedLanguage === 'bn' ? 'Bengali' : 'English'} profile data. You can edit and update it below.`);
+            } else {
+                // Clear form for new profile
+                document.getElementById('profileForm').reset();
+                this.showAlert('profileAlert', 'info', 
+                    `No existing ${selectedLanguage === 'bn' ? 'Bengali' : 'English'} profile found. Enter your information below to create a new profile.`);
+            }
+        } catch (error) {
+            console.error('Error loading profile data:', error);
+            this.showAlert('profileAlert', 'warning', 
+                `Could not load existing profile data. You can still enter your information below.`);
+        }
+    }
+
+    async fetchExistingProfile(username, language) {
+        // Simulate fetching profile data from persona files
+        // In a real implementation, this would make API calls to fetch the markdown files
+        const filename = language === 'en' ? 'index.en.md' : 'index.md';
+        const profilePath = `/persona/${username}/${filename}`;
+        
+        try {
+            // For demo purposes, we'll simulate some profile data based on the username
+            // In production, this would fetch from the actual markdown files
+            const mockProfiles = {
+                'MdsShakil': {
+                    name: language === 'bn' ? 'শাকিল হোসেন' : 'Shakil Hosen',
+                    title: language === 'bn' ? 'তহবিল পরিচালনা ও রিপোর্টিং' : 'Fund Management & Reporting',
+                    email: 'shakil@bnwp.org',
+                    location: language === 'bn' ? 'বাংলাদেশ' : 'Bangladesh',
+                    role: language === 'bn' ? 'তহবিল পরিচালনা ও রিপোর্টিং' : 'Fund Management & Reporting',
+                    teams: ['cot', 'technical'],
+                    img: 'https://upload.wikimedia.org/wikipedia/commons/e/e1/Shakil_in_2025.jpg',
+                    bio: language === 'bn' ? 'শাকিল হোসেন একজন উইকিমিডিয়া স্টুয়ার্ড ও ঢাকা উইকিমিডিয়া সম্প্রদায়ের সহ-সমন্বয়ক।' : 'Shakil Hosen is a Wikimedia Steward and co-coordinator of Dhaka Wikimedia Community.'
+                },
+                'Yahya': {
+                    name: language === 'bn' ? 'ইয়াহিয়া' : 'Yahya',
+                    title: language === 'bn' ? 'প্রশাসনিক কর্মকর্তা' : 'Administrative Officer',
+                    email: 'yahya@bnwp.org',
+                    location: language === 'bn' ? 'বাংলাদেশ' : 'Bangladesh',
+                    role: language === 'bn' ? 'প্রশাসনিক কর্মকর্তা' : 'Administrative Officer',
+                    teams: ['admin'],
+                    bio: language === 'bn' ? 'ইয়াহিয়া একজন অভিজ্ঞ প্রশাসনিক কর্মকর্তা।' : 'Yahya is an experienced administrative officer.'
+                },
+                'Aishik Rehman': {
+                    name: language === 'bn' ? 'আইশিক রহমান' : 'Aishik Rehman',
+                    title: language === 'bn' ? 'প্রযুক্তি বিশেষজ্ঞ' : 'Technology Specialist',
+                    email: 'aishik@bnwp.org',
+                    location: language === 'bn' ? 'বাংলাদেশ' : 'Bangladesh',
+                    role: language === 'bn' ? 'প্রযুক্তি বিশেষজ্ঞ' : 'Technology Specialist',
+                    teams: ['technical', 'admin'],
+                    bio: language === 'bn' ? 'আইশিক রহমান একজন দক্ষ প্রযুক্তি বিশেষজ্ঞ।' : 'Aishik Rehman is a skilled technology specialist.'
+                }
+            };
+            
+            return mockProfiles[username] || null;
+        } catch (error) {
+            console.error('Error fetching profile:', error);
+            return null;
+        }
     }
 
     async handleProfileUpdate(e) {
         e.preventDefault();
         
+        const selectedLanguage = document.getElementById('profileLanguage').value;
         const profileData = {
             username: this.currentUser.username,
+            language: selectedLanguage,
             name: document.getElementById('profileName').value,
             title: document.getElementById('profileTitle').value,
             email: document.getElementById('profileEmail').value,
@@ -545,7 +639,7 @@ class ProfileManager {
             await this.githubAPI.simulateGitHubOperation('updateProfile', profileData);
             
             this.showAlert('profileAlert', 'success', 
-                'Profile updated successfully! Changes will be reflected on the website after the next deployment.');
+                `${selectedLanguage === 'bn' ? 'Bengali' : 'English'} profile updated successfully! Changes will be reflected on the website after the next deployment.`);
         } catch (error) {
             this.showAlert('profileAlert', 'danger', 
                 `Error updating profile: ${error.message}`);
@@ -592,8 +686,9 @@ class ProfileManager {
                 newPasswordHash: newPasswordHash
             });
             
-            // Update local user data
+            // Update local user data - CRITICAL: Update userData object for persistence
             this.currentUser.passwordHash = newPasswordHash;
+            this.userData[this.currentUser.username].passwordHash = newPasswordHash;
             sessionStorage.setItem('currentUser', JSON.stringify(this.currentUser));
             
             this.showAlert('passwordAlert', 'success', 'Password changed successfully!');
