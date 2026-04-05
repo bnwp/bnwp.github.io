@@ -5,7 +5,7 @@ teams:
     - cot
 role: Co-Lead
 username: Yahya
-img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Yahya_at_Bangla_WikiConference_2024.jpg/553px-Yahya_at_Bangla_WikiConference_2024.jpg"
+img: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Yahya_at_Bangla_WikiConference_2024.jpg"
 ---
 মুহাম্মদ ইয়াহিয়া একজন উইকিমিডিয়া স্টুয়ার্ড এবং ঢাকা উইকিমিডিয়া সম্প্রদায়ের প্রধান সমন্বয়ক। তিনি বিভিন্ন উইকিমিডিয়া প্রকল্পে বেশ কিছু উচ্চতর ব্যবহারকারী অধিকার ধারণ করেন, যার মধ্যে রয়েছে তার মাতৃপ্রকল্প বাংলা উইকিপিডিয়ায় প্রশাসক, গোপনকারী এবং ইন্টারফেস প্রশাসক হিসেবে ভূমিকা পালন। এছাড়াও, তিনি উইকিউপাত্ত ও বাংলা উইকিভ্রমণে প্রশাসক এবং কেন্দ্রীয় বিজ্ঞপ্তি প্রশাসক হিসেবেও দায়িত্ব পালন করছেন।
 
